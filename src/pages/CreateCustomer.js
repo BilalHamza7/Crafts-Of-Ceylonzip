@@ -39,7 +39,7 @@ export default function AccountCreation() {
           navigate("/product")
         }
         else{
-          alert("Please check your username and password.")
+          alert("Please kskskscheck your username and password.")
         }
       })
         navigate("/product")
