@@ -1,12 +1,12 @@
 import React from 'react'
-import NavigationBar from '../components/NavigationBar1'
+import {NavigationBar1} from '../components/NavigationBar'
 import Footer from '../components/Footer';
 import '../styles/contact.css'
 
 export default function Contact() {
   return (
     <div>
-        <NavigationBar showAdditionalItems={false}/>
+        <NavigationBar1/>
         <div className='callUs'>
             <h1>Call Us</h1>
         </div>

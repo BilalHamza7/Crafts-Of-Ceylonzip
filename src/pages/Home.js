@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import NavigationBar1 from '../components/NavigationBar1'
+import {NavigationBar1} from '../components/NavigationBar'
 import Footer from '../components/Footer';
 import Elephant from '../images/elephant.png';
 import Drum from '../images/drum.png';
@@ -12,10 +12,10 @@ import ProductView from '../components/ProductView';
 export default function Home() {
   return (
     <div>
-        <NavigationBar1 showAdditionalItems={true}/>
+        <NavigationBar1/>
         <div className='loginSignin'>
 
-            <h1 style={{marginTop: " 120px"}}>Explore The Craftsmanship of Sri Lanka's</h1>
+            <h1>Explore The Craftsmanship of Sri Lanka's</h1>
             <h1>Finest Artisans</h1>
             <p>Experience the Fusion of Tradition and Innovation, <br/>Unearth Exceptional Handcrafted Creations</p>
 

@@ -1,5 +1,5 @@
 import React from 'react'
-import NavigationBar1 from '../components/NavigationBar1'
+import {NavigationBar1} from '../components/NavigationBar'
 import Footer from '../components/Footer';
 
 export default function NewFAQ() {
