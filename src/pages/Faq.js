@@ -7,7 +7,7 @@ export default function Faq() {
   return (
     <div>
         <NavigationBar1/>
-        <div style={{display:"flex",height:"50vh", padding:"100px 100px 100px 220px"}}>
+        <div style={{display:"flex",height:"51vh", padding:"100px 100px 100px 220px"}}>
             <div style={{width:"30%", paddingLeft:"250px", borderRight:"2px solid black"}}>
                 <h1 style={{fontFamily:"serif",fontSize:"420%",margin:"0"}}>FAQ</h1>
                 <h4>Leave us a Message (Optional)</h4>
