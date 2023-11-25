@@ -1,0 +1,207 @@
+/* .column1{
+    display: flex;
+} */
+
+.productOption{
+    display: flex;
+    padding: 80px;
+}
+.productOption .column1{
+    flex: 40%;
+}
+.productOption .column2{
+    flex: 60%;
+}
+.productDetail1 form{
+    display: flex;
+    flex-direction: column;
+}
+.column1 .productDetail1, .column1 .productDetail2{
+    border: 3px rgb(183, 179, 179) solid;
+    border-radius: 15px;
+    padding: 40px;
+}
+
+.column1 .productDetailHeading1, .column1 .productDetailHeading2{
+    margin-bottom: 13px;
+}
+.column1 .productDetailHeading2{
+    margin-top: 15px;
+}
+
+.productDetail2 form{
+    display: flex;
+    flex-direction: column;
+}
+
+.column1 .productDetail1 input[type="text"], 
+.column1 .productDetail1 textarea, 
+.column1 .productDetail2 input[type="text"]{
+    width: 95%;
+}
+
+.column1 input[type="number"], .column1 input[type="text"], .column1 textarea{
+    border: 1px rgb(133, 132, 132) solid;
+    color: rgb(114, 113, 113);
+    font-size: 70%;
+}
+.column1 textarea{
+    font-size: 80%;
+}
+
+.productDetail1 form select{
+    height: 34px;
+    border-radius: 6px;
+    
+}
+
+.column1 .productDetail1 select{
+    width: 98%;
+}
+
+.column2{
+    margin-top: 34px;
+    margin-left: 70px;
+    /* background-color: bisque; */
+    height: 80vh;
+}
+
+.column2 .clickImageUpload{
+    background-color: rgba(217,217,217,255);
+    height: 40vh;
+    border-radius: 15px;
+}
+
+.clickImageUpload .addImage {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 40vh;
+}
+
+.column2 .clickImageUpload img{
+    width: 20%;
+    cursor: pointer;
+}
+
+.column2 .clickImageUpload label{
+    font-size: 130%;
+    padding: 5%;
+}
+
+.column2 .clickImageUpload label:hover{
+    font-size: 135%;
+    cursor: pointer;
+}
+
+.column2 .clickImageUpload input{
+    display: none;
+
+}
+
+.clickImageUpload .previewImage{
+    border: 2px black solid;
+    width: 420px;
+    height: 337px;
+    padding: 10px;
+    border: 3px rgb(183, 179, 179) solid;
+    border-radius: 15px;
+    
+}
+
+.clickImageUpload .previewImage img{
+    
+    width: 420px;
+    height: 337px;
+}
+
+.submitButton input[type="submit"]{
+    margin-top: 30px;
+    padding: 6px;
+    width: 509px;
+    height: 35px;
+    font-size: 120%;
+    cursor: pointer;
+    background-color: rgba(236, 118, 66, 255);
+    color: white;
+    border: none;
+}
+
+.submitButton  input[type="submit"]:hover{
+    color:rgb(67, 64, 64);
+    font-size: 122%;
+
+}
+
+
+
+
+
+
+
+.orderDetails{
+    padding-left: 170px;
+    padding-top: 35px;  
+    padding-right: 110px;  
+}
+
+.orderDetails .filter input[type="text"]{
+    border: 2px rgb(154, 152, 152) solid;
+    border-radius: 5px;
+    padding: 12px 20px 12px 40px;
+    font-size: 16px;
+    background-image: url('../images/search.png');
+    background-repeat: no-repeat;
+    background-position: 10px;
+    width: 560px;
+    
+}
+.orderDetails .filter select{
+    border: 2px rgb(154, 152, 152) solid;
+    border-radius: 5px;
+    padding: 12px;
+    font-size: 16px;
+    width: 213px;
+}
+
+.orderDetails select{
+    margin-left: 40px;
+}
+.orderDetails .orderStatus{
+    /* margin-left: 170px; */
+    margin-top: 50px;
+}
+
+.orderDetails .orderStatus label{
+    border: 1px black solid;
+    padding: 9px 35px;
+    margin-right: 29px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.orderDetails .orderDetailsFromDatabase .columnNames{
+    margin-top: 40px;
+    color: rgb(154, 152, 152) solid;
+
+}
+.orderDetails .orderDetailsFromDatabase .columnNames label{
+    margin-right: 170px;
+    font-weight: bold;
+    font-size: 105%;
+    color:  rgb(81, 78, 78);
+}
+
+#pending{
+    background-color: rgba(242,220,245,255);
+    color: rgba(184,91,199,255);
+}
+#progress{
+    background-color: rgba(197,230,248,255);
+    color: rgba(74,152,197,255); 
+}
+#delivered{
+    background-color: rgba(208,231,220,255);
+    color: rgba(78,164,122,255); 
+}

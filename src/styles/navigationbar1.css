@@ -1,0 +1,107 @@
+.navbar1{
+    width: 100%;
+    height: 110px;
+    background-color: rgba(236, 118, 66, 255);
+    display: flex;
+    flex-direction: row;
+    position: fixed;
+}
+#title {
+    padding: 25px 40px 25px 80px;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.navRight a.active {
+    background-color: black;
+    color: white;
+    border-radius: 12px;
+}
+
+.navLeft input[type=text] {
+    border: 2px solid black;
+    border-radius: 20px;
+    padding: 12px 20px 12px 40px;
+    font-size: 16px;
+    background-image: url('../images/search.png');
+    background-repeat: no-repeat;
+    background-position: 10px;
+    width: 70px;
+    transition: width 0.4s ease-in-out, padding 0.4s ease-in-out;
+    background-color: rgba(236, 118, 66, 255);
+    color: #654321;
+    vertical-align: middle;
+    outline: none;
+    font-weight: bold;
+
+}
+
+.navLeft input[type=text]:focus {
+    width: 220px;
+}
+
+.navLeft input[type=text]::placeholder {
+    color: black;
+    font-weight: normal;
+}
+
+.navLeft, .navRight{
+    width: 50%;
+    height: 100%;
+    align-items: center;
+    display: flex;
+    text-decoration: none;
+}
+
+.navLeft a, .navRight a {
+    text-decoration: none; /* Remove underline from links */
+    color: black;
+}
+
+.navRight ul {
+    list-style: none;
+    display: flex;
+    align-items: center;
+}
+
+.navRight li {
+  font-size: 110%;
+}
+
+.navRight a{
+    margin-right: 5px;
+    padding: 15px;
+    font-size: 110%;
+}
+.navRight{
+    justify-content: flex-end;
+}
+
+.navRight a:hover{
+    background-color: black;
+    color: white;
+    border-radius: 12px;
+}
+
+#userProfile{
+    margin-left: 12px;
+}
+
+#userProfile img, btnShoppingCart img{
+    width: 32px;
+}
+
+#btnSeller, #btnLan{
+    margin-right: 60px;
+
+}
+
+#btnShoppingCart{
+    margin-right: 35px;
+    margin-left: 17px;
+    cursor: pointer;
+}
+#userProfile{
+    margin-right: 90px;
+    cursor: pointer;
+}
