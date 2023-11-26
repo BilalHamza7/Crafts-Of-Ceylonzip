@@ -210,8 +210,8 @@ const createProduct = (file) => { //gets file from
                     {
                       sellerOrders.map((order,index)=>(
                       <tr>
-                        {/* //group multiple elements without adding an extra node to the DOM. */}
-                        <React.Fragment key={index}>  
+                        {/* group multiple elements without adding an extra node to the DOM. */}
+                        <React.Fragment key={index}>
                           <td>{order.customerName}</td>
                           <td>{order.address}</td>
                           <td>{order.productName}</td>
