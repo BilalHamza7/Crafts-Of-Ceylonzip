@@ -59,3 +59,25 @@ export function NavigationBar3() {
     </nav>
   )
 }
+
+export function NavigationBar4() {
+  return (
+    <nav className="navbar">
+        <div className="navLeft">
+            <Link id='title' to="/">Craft of Ceylon.</Link>
+            <input type="text" name="search" placeholder='Search..' autoComplete="off"/>
+        </div>
+        
+
+        <div className="navRight">
+            <NavLink id='title' to="/sellerLogin">Be a Seller!</NavLink>        {/* Link is suitable for general navigation where you don't need to apply specific styles to the active link. */}
+            <NavLink to="/" className="Link">Home</NavLink>
+            <NavLink to="/about" className="Link">About</NavLink>
+            <NavLink to="/contact" className="Link">Contact</NavLink>
+            <NavLink to="/user/cart"><img src={shoppingCart}/></NavLink>
+            <Link to="/seller"><img src={userImage}/></Link>
+        </div>
+
+    </nav>
+  )
+}

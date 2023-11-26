@@ -17,6 +17,9 @@ const [imagePreview, setImagePreview] = useState(null);
       reader.onload = () => {
         const previewImage = reader.result;
         setImagePreview(previewImage);
+
+        alert(`Selected Image Path: D:\\downloads\\${file.name}`);
+        setfilePath(`D:\\downloads\\${file.name}`);
       };
       reader.readAsDataURL(file);
     }
@@ -27,22 +30,19 @@ const [description, setDescription] = useState('');
 const [category, setCategory] = useState('');
 const [price, setPrice] = useState('');
 const [weight, setWeight] = useState('');
+const [filePath, setfilePath] = useState('');
     
 //to store image
 const createProduct = (file) => { //gets file from 
   const formData = new FormData();
-  formData.append('file', imagePreview);
+  formData.append('filePath', filePath);
   formData.append('name', name);
   formData.append('description', description);
   formData.append('category', category);
   formData.append('price', price);
   formData.append('weight', weight);
 
-  axios.post('http://localhost:8083/product/createProduct', formData, {
-    headers: {
-      'Content-Type': 'multipart/form-data'
-    }
-  })
+  axios.post('http://localhost:8083/product/createProduct', formData)
     .then((response) => response.json())
       .then((data) => {
         // Here you can handle the response from the server
@@ -68,7 +68,7 @@ const createProduct = (file) => { //gets file from
 
                 <div className='productDetail1'>
 
-                  <form onSubmit={createProduct} method='post'>
+                  <form onSubmit={createProduct} >
 
                   <label htmlFor="productCategory">Product Category*</label>
                     <select id="productCategory" name="productCategory" onSelect={(e) => setCategory(e.target.value)} required>
@@ -91,7 +91,7 @@ const createProduct = (file) => { //gets file from
                     <input type="number" id="productWeight" name='productWeight' autoComplete='off'  onChange={(e) => setWeight(e.target.value)} required/>
 
                     <div className='submitButton'>
-                    <input type="submit" value="Submit Product" formAction=''/>
+                      <input type="submit" style={{fontSize: "84%"}}value="Submit Product"/>
                     </div>  
                   </form>
                 </div>
@@ -101,7 +101,7 @@ const createProduct = (file) => { //gets file from
                 </div>
                 <div className='productDetail2'>
 
-                  <form action="" method="">
+                  <form >
 
                     <label htmlFor="productLength">Length*</label>
                     <input type="number" id="productLength" name='productLength' autoComplete='off'/><br/>
@@ -114,10 +114,10 @@ const createProduct = (file) => { //gets file from
 
                   </form>
 
-                </div>
-                <div className='submitButton'>
-                    <input type="submit" value="Submit Product" formAction=''/>
-                </div>
+                  </div>
+                  <div className='submitButton'>
+                      <input type="submit" value="Submit Product" formAction=''/>
+                  </div>
 
 
 
@@ -131,9 +131,9 @@ const createProduct = (file) => { //gets file from
                   <img src={AddImage} alt="add product" id='productImg' htmlFor='uploadImg'/>
                   <label htmlFor='uploadImg'>Click and Add product photo</label>
 
-                  <form action="" method="post">
+
                     <input type="file" accept="image/*" id='uploadImg' onChange={onSelectedFile} />
-                  </form>
+
 
                 </label>
  

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import '../styles/productView.css'
-import {NavigationBar2} from '../components/NavigationBar';
+import {NavigationBar4} from '../components/NavigationBar';
 import Footer from '../components/Footer';
 import SellerSideBar from '../components/SellerSideBar';
 import SellerView from '../components/SellerView';
@@ -16,7 +16,7 @@ export default function Seller() {
 
   return (
     <div>
-        <NavigationBar2/>
+        <NavigationBar4/>
         <div className='aboutBackgroundPage'>
 
         <h1>Welcome Seller</h1>
