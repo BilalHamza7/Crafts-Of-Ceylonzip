@@ -6,7 +6,7 @@
 }
 .SellerSelectAndView .sidebar{
     flex: 25%;
-    border: 2px red solid;
+    /* border: 2px red solid; */
 }
 
 .SellerSelectAndView .dashboard{
