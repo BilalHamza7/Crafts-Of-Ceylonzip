@@ -37,7 +37,7 @@ export default function AccountCreation() {
             })
             .then(response2 =>{
             if(response2.data === response.data.id){
-                navigate("/product")
+                navigate("/seller")
             }
             else{
                 alert("Please check your username and password.")
