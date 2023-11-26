@@ -183,16 +183,40 @@
 
 .orderDetailsFromDatabase .columnNames table{
     width: 100%;
-    border-collapse: collapse;
+    border-collapse: separate;
+
+    border-spacing: 10px 17px;
     margin-top: 20px;
+}
+.orderDetailsFromDatabase .columnNames th{
+    margin: 12px;
 }
 
 .orderDetailsFromDatabase .columnNames th, .columnNames td {
-    border: 1px solid #dddddd;
-    text-align: left;
+    /* border: 1px solid #dddddd; */
+    border-bottom: 1px solid #dddddd;
+    text-align: center;
     padding: 8px;
-  }
+}
 
+.orderDetailsFromDatabase .columnNames .DELIVERED{
+    background-color: rgba(208,231,220,255);
+    color: rgba(78,164,122,255); 
+    border-radius: 12px;
+    padding:10px;
+}
+.orderDetailsFromDatabase .columnNames .PENDING{
+    background-color: rgba(242,220,245,255);
+    color: rgba(184,91,199,255);
+    border-radius: 12px;
+    padding:10px;
+}
+.orderDetailsFromDatabase .columnNames .IN_PROGRESS{
+    background-color: rgba(197,230,248,255);
+    color: rgba(74,152,197,255); 
+    border-radius: 12px;
+    padding:10px;
+}
 
 #pending{
     background-color: rgba(242,220,245,255);

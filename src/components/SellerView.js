@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import '../styles/sellerview.css'
 import AddImage from '../images/addImage.png';
-import SellerAccountDetails from './UserAccountDetails';
+import SellerAccountDetails from './SellerAccountDetails';
 
 export default function SellerView({ selectedOption }) { // (pro)--comes in Object form or ({ selected})
 
@@ -200,32 +200,29 @@ const createProduct = (file) => { //gets file from
                     <th>PRODUCT</th>
                     <th>STATUS</th>
                   </tr>
-                  <tr>
+                  {/* <tr>
                     <td>Hello</td>
                     <td>Hello</td>
                     <td>Hello</td>
                     <td>Hello</td>
-                  </tr>
+                  </tr> */}
                   
                     {
                       sellerOrders.map((order,index)=>(
                       <tr>
-                        <React.Fragment key={index}>  //group multiple elements without adding an extra node to the DOM.
+                        <React.Fragment key={index}>
                           <td>{order.customerName}</td>
                           <td>{order.address}</td>
                           <td>{order.productName}</td>
-                          <td>{order.status}</td>
+                          <td className={order.status}>{order.status}</td>
                         </React.Fragment>
                         </tr>
-
                       ))
                     }
                 </tbody>
               </table>
-
             </div>
           </div>
-
         </div>
       )}
 
