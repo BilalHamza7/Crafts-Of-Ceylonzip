@@ -15,11 +15,11 @@ export function NavigationBar1() {
         
 
         <div className="navRight">
-            <NavLink id='title' to="/seller">Be a Seller!</NavLink>        {/* Link is suitable for general navigation where you don't need to apply specific styles to the active link. */}
+            <NavLink id='title' to="/loginseller">Be a Seller!</NavLink>        {/* Link is suitable for general navigation where you don't need to apply specific styles to the active link. */}
             <NavLink to="/" className="Link">Home</NavLink>
             <NavLink to="/about" className="Link">About</NavLink>
             <NavLink to="/contact" className="Link">Contact</NavLink>
-            <NavLink to="/login"><img src={userImage}/></NavLink>
+            <NavLink to="/logincustomer"><img src={userImage}/></NavLink>
         </div>
 
     </nav>
@@ -39,11 +39,11 @@ export function NavigationBar2() {
         <div className="navRight">
             <NavLink id='title' to="/sellerLogin">Be a Seller!</NavLink>        {/* Link is suitable for general navigation where you don't need to apply specific styles to the active link. */}
             <NavLink to="/" className="Link">Home</NavLink>
-            <NavLink to="/product" className="Link">Products</NavLink>               {/* NavLink allows you to apply custom styles to the active link, making it easy to highlight the current page or section. */}
+            <NavLink to="/user/product" className="Link">Products</NavLink>               {/* NavLink allows you to apply custom styles to the active link, making it easy to highlight the current page or section. */}
             <NavLink to="/about" className="Link">About</NavLink>
             <NavLink to="/contact" className="Link">Contact</NavLink>
             <NavLink to="/user/cart"><img src={shoppingCart}/></NavLink>
-            <NavLink to="/userProfile"><img src={userImage}/></NavLink>
+            <Link to="/user/detail"><img src={userImage}/></Link>
         </div>
 
     </nav>

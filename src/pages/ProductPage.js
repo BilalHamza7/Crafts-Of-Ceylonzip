@@ -1,7 +1,7 @@
 import React from 'react'
 import {NavigationBar2} from '../components/NavigationBar'
 import Footer from '../components/Footer';
-import SideBar from '../components/CustomerSideBar';
+import SideBar from '../components/ProductCustomerSideBar';
 import ProductView from '../components/ProductView';
 import '../styles/product.css'
 
