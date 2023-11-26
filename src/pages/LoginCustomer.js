@@ -21,7 +21,7 @@ export default function Login() {
     })
     .then(response =>{
       if(response.data === true){
-        navigate("/product")
+        navigate("/user/product")
       }
       else{
         alert("Incorrect password or username please try again.")

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import '../styles/sellerview.css'
 import AddImage from '../images/addImage.png';
 import axios from 'axios';
+import AccountDetails from './AccountDetails';
 
 export default function SellerView({ selectedOption }) { // (pro)--comes in Object form or ({ selected})
 
@@ -25,7 +26,7 @@ const [imagePreview, setImagePreview] = useState(null);
     }
 };
 
-const [name, setName] = useState('');
+const [name, setName] = useState('Bilal');
 const [description, setDescription] = useState('');
 const [category, setCategory] = useState('');
 const [price, setPrice] = useState('');
@@ -41,6 +42,8 @@ const createProduct = (file) => { //gets file from
   formData.append('category', category);
   formData.append('price', price);
   formData.append('weight', weight);
+
+   file.preventDefault();
 
   axios.post('http://localhost:8083/product/createProduct', formData)
     .then((response) => response.json())
@@ -79,7 +82,7 @@ const createProduct = (file) => { //gets file from
                     </select><br/>
 
                     <label htmlFor="productName">Product Name*</label>
-                    <input type="text" id="productName" name='productName' autoComplete='off'  onChange={(e) => setName(e.target.value)} required/><br/>
+                    <input type="text" id="productName" name='productName' autoComplete='off'  onChange={(e) => setName(e.target.value)} value={name} required/><br/>
 
                     <label htmlFor="productPrice">Product Price*</label>
                     <input type="text" id="productPrice" name='productPrice' autoComplete='off'  onChange={(e) => setPrice(e.target.value)} required/><br/>
@@ -198,9 +201,7 @@ const createProduct = (file) => { //gets file from
 
       {selectedOption === 'Account Details' && (
         <div>
-          {/* Content for Order */}
-          <h2>Order Page</h2>
-          <p>This is the content for the Order page.</p>
+          <AccountDetails/>
         </div>
       )}
     </div>
