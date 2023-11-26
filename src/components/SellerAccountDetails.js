@@ -1,7 +1,6 @@
 import React from 'react'
 import { useState } from 'react'
 import '../styles/accountDetails.css'
-import { useEffect } from 'react';
 
 export default function AccountDetails() {
     {/* set usestate from the database */}

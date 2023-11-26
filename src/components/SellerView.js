@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import '../styles/sellerview.css'
 import AddImage from '../images/addImage.png';
 import axios from 'axios';
-import AccountDetails from './AccountDetails';
+import SellerAccountDetails from './UserAccountDetails';
 
 export default function SellerView({ selectedOption }) { // (pro)--comes in Object form or ({ selected})
 
@@ -201,7 +201,7 @@ const createProduct = (file) => { //gets file from
 
       {selectedOption === 'Account Details' && (
         <div>
-          <AccountDetails/>
+          <SellerAccountDetails/>
         </div>
       )}
     </div>
