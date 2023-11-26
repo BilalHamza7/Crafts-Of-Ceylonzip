@@ -1,12 +1,13 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import '../styles/sellerview.css'
 import AddImage from '../images/addImage.png';
-import axios from 'axios';
 import SellerAccountDetails from './UserAccountDetails';
 
 export default function SellerView({ selectedOption }) { // (pro)--comes in Object form or ({ selected})
 
 const [imagePreview, setImagePreview] = useState(null);
+const [sellerOrders, setSellerOrder] = useState([])
 
 
 //to display the image in frontend
@@ -55,6 +56,14 @@ const createProduct = (file) => { //gets file from
         // Handle any errors that occurred during the request
         console.error('Error:', error);
       })
+
+
+
+  // this below to display order details to the Seller
+  const loadProducts = async()=> {
+    const result = await axios.get("http://localhost:8083/order/getOrder");
+    setSellerOrder(result.data);
+  }
 }
 
   return (
@@ -178,14 +187,38 @@ const createProduct = (file) => { //gets file from
           
           <div className='orderDetailsFromDatabase'>
             <div className='columnNames'>
-              <label>ORDER ID</label>
-              <label>PLACED ON</label>
-              <label>PRODUCT</label>
-              <label>STATUS</label>
-              <label>PRICE</label>
-            </div>
-            <div></div>            
 
+              <table>
+                <tbody>
+                  <tr>
+                    <th>CUSTOMER</th>
+                    <th>ADDRESS</th>
+                    <th>PRODUCT</th>
+                    <th>STATUS</th>
+                  </tr>
+                  <tr>
+                    <td>Hello</td>
+                    <td>Hello</td>
+                    <td>Hello</td>
+                    <td>Hello</td>
+                  </tr>
+                  <tr>
+                    {
+                      sellerOrders.map((order,index)=>(
+
+                        <React.Fragment key={index}>  //group multiple elements without adding an extra node to the DOM.
+                          <td>{order.customerName}</td>
+                          <td>{order.address}</td>
+                          <td>{order.productName}</td>
+                          <td>{order.status}</td>
+                        </React.Fragment>
+                      ))
+                    }
+                  </tr>
+                </tbody>
+              </table>
+
+            </div>
           </div>
 
         </div>

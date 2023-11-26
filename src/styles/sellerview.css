@@ -181,17 +181,18 @@
     font-weight: bold;
 }
 
-.orderDetails .orderDetailsFromDatabase .columnNames{
-    margin-top: 40px;
-    color: rgb(154, 152, 152) solid;
+.orderDetailsFromDatabase .columnNames table{
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
 
-}
-.orderDetails .orderDetailsFromDatabase .columnNames label{
-    margin-right: 170px;
-    font-weight: bold;
-    font-size: 105%;
-    color:  rgb(81, 78, 78);
-}
+.orderDetailsFromDatabase .columnNames th, .columnNames td {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+  }
+
 
 #pending{
     background-color: rgba(242,220,245,255);
