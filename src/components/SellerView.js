@@ -200,41 +200,123 @@ const createProduct = (file) => { //gets file from
                     <th>PRODUCT</th>
                     <th>STATUS</th>
                   </tr>
-                  <tr>
+                  {/* <tr>
                     <td>Hello</td>
                     <td>Hello</td>
                     <td>Hello</td>
                     <td>Hello</td>
-                  </tr>
-
+                  </tr> */}
+                  
                     {
                       sellerOrders.map((order,index)=>(
                       <tr>
-                        {/* group multiple elements without adding an extra node to the DOM. */}
                         <React.Fragment key={index}>
                           <td>{order.customerName}</td>
                           <td>{order.address}</td>
                           <td>{order.productName}</td>
-                          <td>{order.status}</td>
+                          <td className={order.status}>{order.status}</td>
                         </React.Fragment>
                         </tr>
-
                       ))
                     }
                 </tbody>
               </table>
-
             </div>
           </div>
-
         </div>
       )}
 
       {selectedOption === 'Sales' && (
-        <div>
-          {/* Content for Order */}
-          <h2>Order Page</h2>
-          <p>This is the content for the Order page.</p>
+        <div className='orderDetails'>
+          <div className='filter'>
+
+          <input type="text" name="search" placeholder='Search..' autocomplete="off"/>
+            <select>
+              <option value="Category">Category</option> 
+              <option>Database</option>
+              <option>Search</option>
+            </select>
+
+            <select>
+              <option value="filterBy">Filter By</option>
+              <option>Price</option>
+              <option>Status</option>
+            </select>
+
+            <div className='orderDetailsFromDatabase'>
+              <div className='columnNames'>
+
+                <table>
+                  <tbody>
+                    <tr>
+                      <th>CUSTOMER</th>
+                      <th>ADDRESS</th>
+                      <th>PRODUCT</th>
+                      <th>PRICE</th>
+                      <th>DATTE</th>
+                    </tr>
+                    <tr>
+                      <td>Sarah Johnson</td>
+                      <td>42, Jayantha Mawatha, Colombo-07</td>
+                      <td>Hand-carved Wooden Elephant</td>
+                      <td>LKR 2,500</td>
+                      <td>04/10/2021</td>
+                    </tr>
+                    <tr>
+                      <td>Sarah Johnson</td>
+                      <td>42, Jayantha Mawatha, Colombo-07</td>
+                      <td>Hand-carved Wooden Elephant</td>
+                      <td>LKR 2,500</td>
+                      <td>12/04/2023</td>
+                    </tr>
+                    <tr>
+                      <td>Emily Davis</td>
+                      <td>136, Tharindu Gardens, Galle-08</td>
+                      <td>Traditional Sri Lankan Sari</td>
+                      <td>LKR 2,500</td>
+                      <td>12/04/2019</td>
+                    </tr>
+                    <tr>
+                      <td>Michael Elisa Johnson</td>
+                      <td>42, Jayantha Mawatha, Colombo-07</td>
+                      <td>Original Cotten Wooden Dress</td>
+                      <td>LKR 11,950</td>
+                      <td>12/04/2023</td>
+                    </tr>
+                    <tr>
+                      <td>Sarah Johnson</td>
+                      <td>42, Jayantha Mawatha, Colombo-07</td>
+                      <td>Hand-carved Wooden Elephant</td>
+                      <td>LKR 2,500</td>
+                      <td>31/12/2015</td>
+                    </tr>
+                    <tr>
+                      <td>Sarah Johnson</td>
+                      <td>42, Jayantha Mawatha, Colombo-07</td>
+                      <td>Hand-carved Wooden Elephant</td>
+                      <td>LKR 2,500</td>
+                      <td>12/04/2023</td>
+                    </tr>
+                    <tr>
+                      <td>Sarah Johnson</td>
+                      <td>42, Jayantha Mawatha, Colombo-07</td>
+                      <td>Hand-carved Wooden Elephant</td>
+                      <td>LKR 2,500</td>
+                      <td>12/04/2023</td>
+                    </tr>
+                    <tr>
+                      <td>Jonathan Trott</td>
+                      <td>42, Jayantha Mawatha, Colombo-07</td>
+                      <td>Hand-carved Wooden Elephant</td>
+                      <td>LKR 2,500</td>
+                      <td>12/04/2023</td>
+                    </tr>
+
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>          
         </div>
       )}
 

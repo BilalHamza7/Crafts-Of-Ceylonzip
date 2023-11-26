@@ -33,7 +33,7 @@ export default function Footer() {
           <li>|</li>
           <Link to="/contact">Contact Us</Link>
           <li>|</li>
-          <Link to="/support">Suppot</Link>
+          <Link>Suppot</Link>
           <li>|</li>
           <Link to="/faq">FAQs</Link>
       </div>
