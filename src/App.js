@@ -11,6 +11,7 @@ import ForgotPassword from './pages/ForgotPassword';
 import Product from './pages/ProductPage';
 import LoginSeller from './pages/LoginSeller';
 import NewFAQ from './pages/NewFAQ';
+import UserProfile from './pages/UserProfile';
 
 
 // import Login from './pages/AccountCreation';
@@ -24,15 +25,19 @@ function App() {
         <Routes>
           <Route path="/" element={<Home/>}/>
           <Route path="/about" element={<About/>}/>
+          <Route path="/about" element={<About/>}/>
+          <Route path="/contact" element={<Contact/>}/>
           <Route path="/contact" element={<Contact/>}/>
           <Route path="/faq" element={<NewFAQ/>}/>
           <Route path="/createcustomer" element={<CreateCustomer/>}/>
           <Route path="/createseller" element={<CreateSeller/>}/>
           <Route path="/logincustomer" element={<LoginCustomer/>}/>
           <Route path="/forgotpassword" element={<ForgotPassword/>}/>
-          <Route path="/product" element={<Product/>}/>
+          <Route path="/user/product" element={<Product/>}/>
           <Route path="/seller" element={<Seller/>}/>
           <Route path="/loginseller" element={<LoginSeller/>}/>
+          <Route path="/user/detail" element={<UserProfile/>}/>
+          
 
           {/* <Route path="/accountcreate" element={<CreateAccount/>}/> */}
 
