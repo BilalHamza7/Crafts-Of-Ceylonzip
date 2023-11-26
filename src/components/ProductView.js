@@ -27,7 +27,7 @@ function ProductView() {
             <div className='productsCard'>
               <div className='productImage'>
                  <img src={`${process.env.PUBLIC_URL}/loadimages/${product.filePath}.jpeg`} alt={`image-${index}`} />
-                 <img src={product.filePath} alt={`image-${index}`} />
+                 {/* <img src={product.filePath} alt={`image-${index}`} /> */}
               </div>
               <div className='productName'>
                  <p>{product.name}</p>

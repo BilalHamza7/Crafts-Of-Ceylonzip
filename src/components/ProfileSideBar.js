@@ -2,12 +2,11 @@ import React from 'react'
 import '../styles/sidebar.css'
 import { Link } from 'react-router-dom'
 
+export function UserProfileSideBar({ onOptionClick }) {
 
-export function UserProfileSideBar() {
-
-  // const styleFromOther = {
-  //   height: compHeight,
-  // };
+  const handleOptionClick = (option) => {
+    onOptionClick(option);
+  };
 
   return (
     <div className="sideBar">
@@ -16,8 +15,8 @@ export function UserProfileSideBar() {
 
           <h3>DASHBOARD</h3>
           <div className='sidebarNavLinks'>
-            <Link>Orders</Link>
-            <Link>Account Details</Link>
+          <Link onClick={() => handleOptionClick('Orders')}>Orders</Link>
+          <Link onClick={() => handleOptionClick('Account Details')}>Account Details</Link>
           </div>
         </div>
 
@@ -25,7 +24,12 @@ export function UserProfileSideBar() {
   )
 }
 
-export function SellerProfileSideBar() {
+export function SellerProfileSideBar({ onOptionClick }) {
+
+  const handleOptionClick = (option) => {
+    onOptionClick(option);
+  };
+
     return (
       <div className="sideBar">
   
@@ -33,10 +37,10 @@ export function SellerProfileSideBar() {
   
             <h3>DASHBOARD</h3>
             <div className='sidebarNavLinks'>
-              <Link>Product</Link>
-              <Link>Order</Link>
-              <Link>Sales</Link>
-              <Link>Account Details</Link>
+              <Link onClick={() => handleOptionClick('Product')}>Product</Link>
+              <Link onClick={() => handleOptionClick('Order')}>Order</Link>
+              <Link onClick={() => handleOptionClick('Sales')}>Sales</Link>
+              <Link onClick={() => handleOptionClick('Account Details')}>Account Details</Link>
             </div>
           </div>
   
