@@ -33,7 +33,7 @@ export default function AccountCreation() {
       })
       .then(response2 =>{
         if(response2.data === response.data.id){//verifies if the customers id and login id is matching
-          navigate("/product")
+          navigate("/user/product")
         }
         else{
           alert("Please check your username and password.")
