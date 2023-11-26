@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import '../styles/sellerview.css'
 import AddImage from '../images/addImage.png';
-import SellerAccountDetails from './UserAccountDetails';
+import SellerAccountDetails from './SellerAccountDetails';
 
 export default function SellerView({ selectedOption }) { // (pro)--comes in Object form or ({ selected})
 
@@ -206,7 +206,7 @@ const createProduct = (file) => { //gets file from
                     <td>Hello</td>
                     <td>Hello</td>
                   </tr>
-                  
+
                     {
                       sellerOrders.map((order,index)=>(
                       <tr>

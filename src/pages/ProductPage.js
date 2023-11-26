@@ -11,7 +11,6 @@ export default function Product() {
 
   const handleOptionClick = (option) => {
     selectedOption = option;
-    window.alert(selectedOption);
   };
 
   return (

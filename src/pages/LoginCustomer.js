@@ -3,6 +3,7 @@ import { Header, WhiteLine1, Footer } from '../components/UserManagment';
 import '../styles/customerLogin.css'
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+export var loginCusId;
 
 export default function Login() {
 
@@ -13,14 +14,14 @@ export default function Login() {
 
   const handleLogin = (event) => {
     event.preventDefault();
-    axios.post('http://localhost:8081/customer/verifyCustomer', null,{
-      params:{
+    axios.post('http://localhost:8081/customer/verifyCustomer',{
         username: username,
         password: password
-      }
     })
     .then(response =>{
-      if(response.data === true){
+      if(response.data){
+        loginCusId = response.data.id
+        alert(loginCusId)
         navigate("/user/product")
       }
       else{

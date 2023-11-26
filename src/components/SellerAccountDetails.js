@@ -3,17 +3,16 @@ import { useState } from 'react'
 import '../styles/accountDetails.css'
 
 export default function AccountDetails() {
-    {/* set usestate from the database */}
+
     const [name,setName] = useState('');
     const [email,setemail] = useState('');
     const [mobileNumber,setmobileNumber] = useState('');
-    const [usersName,setusersName] = useState('');
-    const [defaultAddress,setdefaultAddress] = useState('');
-    const [secondaryAddress,setsecondaryAddress] = useState('');
+    const [username,setUsername] = useState('');
+    const [defaultAddress,setAddress] = useState('');
     const [businessName,setbusinessName] = useState('');
 
-    const [userName,setUsername] = useState('');
-    const [password,setpassword] = useState('');
+    const [password,setPassword] = useState('');
+    const [newPassword,setNewPassword] = useState('');
 
     const handleAccountDetailsUpdate = () =>{
 
@@ -30,25 +29,22 @@ export default function AccountDetails() {
             <form onSubmit={handleAccountDetailsUpdate}>
 
                 <label htmlFor="txtFullName">Your name*</label>
-                <input type="text" value={name} id="txtFullName" name='name' autoComplete='off'/>
+                <input type="text" value={name} id="txtFullName" name='name' autoComplete='off' onChange={(e) => setName(e.target.value)} required/>
 
                 <label htmlFor="txtEmail">Email*</label>
-                <input type="email" value={email} id="txtEmail" name='email'autoComplete='off'/>
+                <input type="email" value={email} id="txtEmail" name='email'autoComplete='off' onChange={(e) => setemail(e.target.value)} required/>
                 
                 <label htmlFor="txtmobilenumber">Mobile Number*</label>
-                <input type="number" value={mobileNumber} id="txtmobilenumber" name='txtmobilenumber'autoComplete='off'/>
+                <input type="number" value={mobileNumber} id="txtmobilenumber" name='txtmobilenumber'autoComplete='off' onChange={(e) => setmobileNumber(e.target.value)} required/>
 
                 <label htmlFor="txtusername">Username*</label>
-                <input type="text" value={usersName} id="txtusername" name='txtusername'autoComplete='off'/>
+                <input type="text" value={username} id="txtusername" name='txtusername'autoComplete='off' onChange={(e) => setUsername  (e.target.value)} required/>
 
-                <label htmlFor="txtdefaultaddress">Default Address*</label>
-                <input type="text" value={defaultAddress} id="txtdefaultaddress" name='txtdefaultaddress'autoComplete='off'/>
-
-                <label htmlFor="txtsecondaryaddress">Secondary Address*</label>
-                <input type="text" value={secondaryAddress} id="txtsecondaryaddress" name='txtsecondaryaddress'autoComplete='off'/>
+                <label htmlFor="txtdefaultaddress">Address*</label>
+                <input type="text" value={defaultAddress} id="txtdefaultaddress" name='txtdefaultaddress'autoComplete='off' onChange={(e) => setAddress(e.target.value)} required/>
 
                 <label htmlFor="txtbusinessname">Business Name*</label>
-                <input type="text" value={businessName} id="txtbusinessname" name='txtbusinessname'autoComplete='off'/>
+                <input type="text" value={businessName} id="txtbusinessname" name='txtbusinessname'autoComplete='off' onChange={(e) => setbusinessName(e.target.value)} required/>
 
                 <input type='submit' value="Continue" id='btnUpdateProfile'/>
 
@@ -59,10 +55,10 @@ export default function AccountDetails() {
             <label className='titleResetPassword'>RESET PASSWORD</label>
             <form onSubmit={handleResetPassword}>
                 <label htmlFor="txtusername">Current Password*</label>
-                <input type="text" value={userName} id="txtusername" name='txtusername'autoComplete='off'/>
+                <input type="text" value={password} id="txtusername" name='txtusername'autoComplete='off' onChange={(e) => setPassword(e.target.value)} required/>
 
                 <label htmlFor="txtpassword">New Password*</label>
-                <input type="password" value={password} id="txtpassword" name='txtpassword'autoComplete='off'/>
+                <input type="password" value={newPassword} id="txtpassword" name='txtpassword'autoComplete='off' onChange={(e) => setNewPassword(e.target.value)} required/>
 
                 <label htmlFor="txtconfirmpassword">Confirm New Password*</label>
                 <input type="password" id="txtconfirmpassword" name='txtconfirmpassword'autoComplete='off'/>
