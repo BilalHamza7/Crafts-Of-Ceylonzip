@@ -14,7 +14,7 @@ function ProductView() {
   },[])
 
   const loadProducts = async()=> {
-    const result = await axios.get("http://localhost:8082/get");
+    const result = await axios.get("http://localhost:8083/get");
     setProducts(result.data);
   }
 
@@ -28,7 +28,8 @@ function ProductView() {
 
 
               <div className='productImage'>
-                 <img src={`${process.env.PUBLIC_URL}/loadimages/${product.file_path}.jpeg`} alt={`image-${index}`} />
+                 {/* <img src={`${process.env.PUBLIC_URL}/loadimages/${product.filePath}.jpeg`} alt={`image-${index}`} /> */}
+                 <img src={product.filePath} alt={`image-${index}`} />
               </div>
               <div className='productName'>
                  <p>{product.name}</p>
