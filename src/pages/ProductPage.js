@@ -4,8 +4,17 @@ import Footer from '../components/Footer';
 import SideBar from '../components/ProductCustomerSideBar';
 import ProductView from '../components/ProductView';
 import '../styles/product.css'
+import { useState } from 'react';
 
 export default function Product() {
+  const [selectedOption, setSelectedOption] = useState("Woodwork");
+
+  const handleOptionClick = (option) => {
+    setSelectedOption(option);
+
+    window.alert(selectedOption);
+  };
+
   return (
     <div className='ProductDisplayContainer'>
         <NavigationBar2/>
@@ -17,7 +26,7 @@ export default function Product() {
         <div className='productSelectAndView'>
 
           <div className='leftFrame'>
-            <SideBar />
+            <SideBar  onOptionClick={handleOptionClick}/>
           </div>
           <div className='rightFrame'>
             <ProductView />
