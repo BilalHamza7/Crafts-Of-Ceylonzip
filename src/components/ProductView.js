@@ -14,7 +14,7 @@ function ProductView() {
   },[])
 
   const loadProducts = async()=> {
-    const result = await axios.get("http://localhost:8083/get");
+    const result = await axios.get("http://localhost:8083/product/getProduct");
     setProducts(result.data);
   }
 
@@ -25,10 +25,8 @@ function ProductView() {
         {
           products.map((product,index)=>(
             <div className='productsCard'>
-
-
               <div className='productImage'>
-                 {/* <img src={`${process.env.PUBLIC_URL}/loadimages/${product.filePath}.jpeg`} alt={`image-${index}`} /> */}
+                 <img src={`${process.env.PUBLIC_URL}/loadimages/${product.filePath}.jpeg`} alt={`image-${index}`} />
                  <img src={product.filePath} alt={`image-${index}`} />
               </div>
               <div className='productName'>

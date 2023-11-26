@@ -72,7 +72,7 @@ export default function AccountCreation() {
                     <input type="password" id="txtPassword" name='password' onChange={(e) => setPassword(e.target.value)} required/><br/>
 
                     <label htmlFor="">Re-enter password</label><br/>
-                    <input type="password" id="" /><br/>
+                    <input type="password" id=""/><br/>
 
                     <input type='submit' value="Continue" id='btnSubmit'/>
                     <p>By continuing, you agree to Crafts of Ceylon’s <span>Conditions of Use</span><br/> and <span>Privacy Notice.</span></p>

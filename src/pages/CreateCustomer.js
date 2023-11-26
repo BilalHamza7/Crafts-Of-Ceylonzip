@@ -70,7 +70,7 @@ export default function AccountCreation() {
 
               <input type='submit' value="Continue" id='btnSubmit'/>
               <p>By continuing, you agree to Crafts of Ceylon’s <span>Conditions of Use</span><br/> and <span>Privacy Notice.</span></p>
-              <Link to="/loginseller" style={{color:"black", fontSize:"16px"}}>Already have an account?Log in.</Link>
+              <Link to="/logincustomer" style={{color:"black", fontSize:"16px"}}>Already have an account?Log in.</Link>
           </div>
           <div className='formRight'>
               <br/><br/>
