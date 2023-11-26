@@ -7,10 +7,17 @@ export default function SellerView({ selectedOption }) { // (pro)--comes in Obje
 
 const [imagePreview, setImagePreview] = useState(null);
 
+const [name, setName] = useState('');
+const [description, setDescription] = useState('');
+const [category, setCategory] = useState('');
+const [price, setPrice] = useState('');
+const [weight, setWeight] = useState('');
+const [filePath, setFilePath] = useState('')
 
 //to display the image in frontend
  const onSelectedFile = (event) => {
     const file = event.target.files[0];
+
 
     if (file) {
       const reader = new FileReader();
@@ -22,11 +29,10 @@ const [imagePreview, setImagePreview] = useState(null);
     }
 };
 
-const [name, setName] = useState('');
-const [description, setDescription] = useState('');
-const [category, setCategory] = useState('');
-const [price, setPrice] = useState('');
-const [weight, setWeight] = useState('');
+const getPath = (event) => {
+  
+}
+
     
 //to store image
 const createProduct = (file) => { //gets file from 
@@ -140,7 +146,7 @@ const createProduct = (file) => { //gets file from
                 {imagePreview && (
 
                   <div className='previewImage'>
-                    <img src={imagePreview} alt='Selected product' />
+                    <img src={imagePreview} alt='Selected product' onChange={getPath}/>
                   </div>
                 )}
                 
