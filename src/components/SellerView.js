@@ -7,6 +7,8 @@ export default function SellerView({ selectedOption }) { // (pro)--comes in Obje
 
 const [imagePreview, setImagePreview] = useState(null);
 
+
+//to display the image in frontend
  const onSelectedFile = (event) => {
     const file = event.target.files[0];
 
@@ -19,6 +21,38 @@ const [imagePreview, setImagePreview] = useState(null);
       reader.readAsDataURL(file);
     }
 };
+
+const [name, setName] = useState('');
+const [description, setDescription] = useState('');
+const [category, setCategory] = useState('');
+const [price, setPrice] = useState('');
+const [weight, setWeight] = useState('');
+    
+//to store image
+const createProduct = (file) => { //gets file from 
+  const formData = new FormData();
+  formData.append('file', imagePreview);
+  formData.append('name', name);
+  formData.append('description', description);
+  formData.append('category', category);
+  formData.append('price', price);
+  formData.append('weight', weight);
+
+  axios.post('http://localhost:8083/product/createProduct', formData, {
+    headers: {
+      'Content-Type': 'multipart/form-data'
+    }
+  })
+    .then((response) => response.json())
+      .then((data) => {
+        // Here you can handle the response from the server
+        console.log('Server response:', data);
+      })
+      .catch((error) => {
+        // Handle any errors that occurred during the request
+        console.error('Error:', error);
+      })
+}
 
   return (
     <div>
@@ -34,10 +68,10 @@ const [imagePreview, setImagePreview] = useState(null);
 
                 <div className='productDetail1'>
 
-                  <form action="" method='post'>
+                  <form onSubmit={createProduct} method='post'>
 
                   <label htmlFor="productCategory">Product Category*</label>
-                    <select id="productCategory" name="productCategory" required>
+                    <select id="productCategory" name="productCategory" onSelect={(e) => setCategory(e.target.value)} required>
                         <option value="null">--Select--</option>
                         <option value="woodwork">Woodwork</option>
                         <option value="textiles">Textiles</option>
@@ -45,17 +79,20 @@ const [imagePreview, setImagePreview] = useState(null);
                     </select><br/>
 
                     <label htmlFor="productName">Product Name*</label>
-                    <input type="text" id="productName" name='productName' autoComplete='off'/><br/>
+                    <input type="text" id="productName" name='productName' autoComplete='off'  onChange={(e) => setName(e.target.value)} required/><br/>
 
                     <label htmlFor="productPrice">Product Price*</label>
-                    <input type="text" id="productPrice" name='productPrice' autoComplete='off'/><br/>
+                    <input type="text" id="productPrice" name='productPrice' autoComplete='off'  onChange={(e) => setPrice(e.target.value)} required/><br/>
                     
                     <label htmlFor="productDescription">Product Description*</label>
-                    <textarea id="productDescription" rows="5" name='productDescription' autoComplete='off'></textarea><br/>
+                    <textarea id="productDescription" rows="5" name='productDescription' autoComplete='off'  onChange={(e) => setDescription(e.target.value)} required></textarea><br/>
 
                     <label htmlFor="productWeight">Item Weight (Kg)*</label>
-                    <input type="number" id="productWeight" name='productWeight' autoComplete='off'/>
+                    <input type="number" id="productWeight" name='productWeight' autoComplete='off'  onChange={(e) => setWeight(e.target.value)} required/>
 
+                    <div className='submitButton'>
+                    <input type="submit" value="Submit Product" formAction=''/>
+                    </div>  
                   </form>
                 </div>
                 <br/>

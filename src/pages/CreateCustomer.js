@@ -11,7 +11,6 @@ export default function AccountCreation() {
   const [mobileNumber, setMobileNumber] = useState('');
   const [address, setAddress] = useState('');
 
-  const [id, setId] = useState('')
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
@@ -19,30 +18,27 @@ export default function AccountCreation() {
 
   const handleLogin = (event) => {
     event.preventDefault();
-    axios.post('http://localhost:8081/customer/createCustomer',{
+    axios.post('http://localhost:8081/customer/createCustomer',{ //submits customer details into database 
       name: name,
       email: email,
       mobileNumber: mobileNumber,
       address: address
     })
     .then(response =>{
-      if(response.data === true){
-        setId(response.data[0])
-        axios.post('http://localhost:8081/customer/recordCredentials',{
-          id: id,
+      if(response.data){
+        axios.post('http://localhost:8081/customer/recordCredentials',{ //stores customer credentials
+          id: response.data.id, //gets the id value from the first response 
           password: password,
-          username: username,
+          username: username
       })
       .then(response2 =>{
-        if(response2.data === id){
-          
+        if(response2.data === response.data.id){//verifies if the customers id and login id is matching
           navigate("/product")
         }
         else{
-          alert("Please kskskscheck your username and password.")
+          alert("Please check your username and password.")
         }
       })
-        navigate("/product")
       }
       else{
         alert("Please check your details and try again.")
