@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import '../styles/productView.css'
 import {NavigationBar4} from '../components/NavigationBar';
 import Footer from '../components/Footer';
-import SellerSideBar from '../components/SellerSideBar';
 import SellerView from '../components/SellerView';
+import { SellerProfileSideBar } from '../components/ProfileSideBar';
 import '../styles/seller.css'
 
 export default function Seller() {
@@ -25,7 +25,7 @@ export default function Seller() {
 
         <div className='SellerSelectAndView'>
           <div className='sidebar'>
-            <SellerSideBar onOptionClick={handleOptionClick} />
+            <SellerProfileSideBar onOptionClick={handleOptionClick} />
           </div>
           <div className='dashboard'>
             <SellerView selectedOption={selectedOption} />

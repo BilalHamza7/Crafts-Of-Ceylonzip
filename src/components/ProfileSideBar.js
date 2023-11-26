@@ -15,8 +15,8 @@ export function UserProfileSideBar({ onOptionClick }) {
 
           <h3>DASHBOARD</h3>
           <div className='sidebarNavLinks'>
-          <Link to="#" onClick={() => handleOptionClick('Orders')}>Orders</Link>
-          <Link to="#" onClick={() => handleOptionClick('Account Details')}>Account Details</Link>
+          <Link onClick={() => handleOptionClick('Orders')}>Orders</Link>
+          <Link onClick={() => handleOptionClick('Account Details')}>Account Details</Link>
           </div>
         </div>
 
@@ -24,7 +24,12 @@ export function UserProfileSideBar({ onOptionClick }) {
   )
 }
 
-export function SellerProfileSideBar() {
+export function SellerProfileSideBar({ onOptionClick }) {
+
+  const handleOptionClick = (option) => {
+    onOptionClick(option);
+  };
+
     return (
       <div className="sideBar">
   
@@ -32,10 +37,10 @@ export function SellerProfileSideBar() {
   
             <h3>DASHBOARD</h3>
             <div className='sidebarNavLinks'>
-              <Link>Product</Link>
-              <Link>Order</Link>
-              <Link>Sales</Link>
-              <Link>Account Details</Link>
+              <Link onClick={() => handleOptionClick('Product')}>Product</Link>
+              <Link onClick={() => handleOptionClick('Order')}>Order</Link>
+              <Link onClick={() => handleOptionClick('Sales')}>Sales</Link>
+              <Link onClick={() => handleOptionClick('Account Details')}>Account Details</Link>
             </div>
           </div>
   

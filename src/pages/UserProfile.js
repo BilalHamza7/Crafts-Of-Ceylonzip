@@ -1,6 +1,6 @@
 import React from 'react'
 import { NavigationBar2 } from '../components/NavigationBar'
-import { UserProfileSideBar, SellerProfileSideBar } from '../components/ProfileSideBar'
+import { UserProfileSideBar } from '../components/ProfileSideBar'
 import AccountDetails from '../components/UserAccountDetails';
 import { useState } from 'react';
 

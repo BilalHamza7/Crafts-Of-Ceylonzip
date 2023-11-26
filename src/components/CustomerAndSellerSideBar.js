@@ -1,13 +1,9 @@
 import React from 'react'
-import '../style/usersidebar.css'
+import '../style/customerandsellersidebar.css'
 import { Link } from 'react-router-dom'
 
 
 export function UserSideBar() {
-
-  // const styleFromOther = {
-  //   height: compHeight,
-  // };
 
   return (
     <div className="sideBar">
@@ -20,7 +16,6 @@ export function UserSideBar() {
             <Link>Account Details</Link>
           </div>
         </div>
-
     </div>
   )
 }
@@ -33,10 +28,10 @@ export function SellerSideBar() {
   
             <h3>DASHBOARD</h3>
             <div className='sidebarNavLinks'>
-              <Link>Product</Link>
-              <Link>Order</Link>
-              <Link>Sales</Link>
-              <Link>Account Details</Link>
+              <Link onClick={() => handleOptionClick('Product')}>Product</Link>
+              <Link onClick={() => handleOptionClick('Order')}>Order</Link>
+              <Link onClick={() => handleOptionClick('Sales')}>Sales</Link>
+              <Link onClick={() => handleOptionClick('Account Details')}>Account Details</Link>
             </div>
           </div>
   
