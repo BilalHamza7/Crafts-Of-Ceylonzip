@@ -30,21 +30,21 @@ export default function AccountCreation() {
           id: response.data.id, //gets the id value from the first response 
           password: password,
           username: username
-      })
-      .then(response2 =>{
-        if(response2.data === response.data.id){//verifies if the customers id and login id is matching
-          navigate("/user/product")
-        }
-        else{
-          alert("Please check your username and password.")
-        }
-      })
+        })
+         .then(response2 =>{
+          if(response2.data === response.data.id){//verifies if the customers id and login id is matching
+            navigate("/user/product")
+          }
+          else{
+            alert("Please check your username and password.")
+          }
+        })
       }
       else{
         alert("Please check your details and try again.")
       }
     })
-  }
+}
 
     return (
       <div>

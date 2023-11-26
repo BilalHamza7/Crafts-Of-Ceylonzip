@@ -27,7 +27,7 @@ const [sellerOrders, setSellerOrder] = useState([])
     }
 };
 
-const [name, setName] = useState('Bilal');
+const [name, setName] = useState('');
 const [description, setDescription] = useState('');
 const [category, setCategory] = useState('');
 const [price, setPrice] = useState('');

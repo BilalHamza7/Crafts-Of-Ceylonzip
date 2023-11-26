@@ -4,6 +4,7 @@ import '../styles/accountDetails.css'
 import { useEffect } from 'react';
 import { loginCusId } from '../pages/LoginCustomer';
 import axios from 'axios';
+import { Navigate, useNavigate } from 'react-router-dom';
 
 export default function AccountDetails() {
     const [name,setName] = useState('');
@@ -15,41 +16,45 @@ export default function AccountDetails() {
     const [password,setPassword] = useState('');
     const [oldPassword,setOldPassword] = useState('');
     const [newPassword,setNewPassword] = useState('');
-    const [loading, setLoading] = useState(true);
+    const id = loginCusId;
+
+    const navigate = useNavigate();
 
     useEffect(() => {
-        const getDetails = async () => {
-            alert(loginCusId)
-            try {
-                const response1 = await axios.get(`http://localhost:8081/customer/getCustomer/${loginCusId}`);
-                setName(response1.data.name);
-                setemail(response1.data.email);
-                setmobileNumber(response1.data.mobileNumber);
-                setAddress(response1.data.address);
-            
-                const response2 = await axios.get(`http://localhost:8081/customer/getCustomerLogin/${loginCusId}`);
-                setUsername(response2.data.username);
-                setOldPassword(response2.data.password);
-                
-                setLoading(false); // Data fetched, loading state set to false
-              } catch (error) {
-                setLoading(false); // In case of an error, set loading state to false
-                console.error("Error fetching data: ", error);
-              }
-        }
-        
         getDetails();
     },[]);
 
+    const getDetails = () => {
+        axios.get(`http://localhost:8081/customer/getCustomer?id=${id}`) //gets all details 
+        .then(response => {
+            setName(response.data.name);
+            setemail(response.data.email);
+            setmobileNumber(response.data.mobileNumber);
+            setAddress(response.data.address);
+        })
+        .catch(error => {
+        });
+
+        axios.get(`http://localhost:8081/customer/getCustomerLogin?id=${id}`) //gets username
+        .then(response => {
+            setUsername(response.data.username);
+            setOldPassword(response.data.password);//to use when comparing old and user entered password
+        })
+        .catch(error => {
+        });
+    }
+
     const handleAccountDetailsUpdate = () =>{
-        axios.put('http://localhost:8081/customer/updateCustomer',loginCusId,{
+        axios.put(`http://localhost:8081/customer/updateCustomer?id=${id}`,{
             name: name,
             email: email,
             mobileNumber: mobileNumber,
             address: address
-        })        
+        })
         .then(response => {
-            // Handle success
+            alert("Details updated Successfully!")
+            
+            navigate("/src/components/UserAccountDetails.js")
         })
         .catch(error => {
         });
@@ -58,11 +63,12 @@ export default function AccountDetails() {
 
     const handleResetPassword = () =>{
         if(oldPassword === password){
-            axios.put('http://localhost:8081/customer/updateCustomerlogin',loginCusId,{
+            axios.put(`http://localhost:8081/customer/updateCustomerlogin?id=${id}`,{
             username: username,
             password: newPassword //setting the new password
         })
         .then(response => {
+            alert("password reset Successful.")
         })
         .catch(error => {
         });
