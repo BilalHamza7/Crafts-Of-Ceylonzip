@@ -4,14 +4,13 @@ import Footer from '../components/Footer';
 import SideBar from '../components/ProductCustomerSideBar';
 import ProductView from '../components/ProductView';
 import '../styles/product.css'
-import { useState } from 'react';
+export var selectedOption;
+
 
 export default function Product() {
-  const [selectedOption, setSelectedOption] = useState("Woodwork");
 
   const handleOptionClick = (option) => {
-    setSelectedOption(option);
-
+    selectedOption = option;
     window.alert(selectedOption);
   };
 
@@ -26,7 +25,7 @@ export default function Product() {
         <div className='productSelectAndView'>
 
           <div className='leftFrame'>
-            <SideBar  onOptionClick={handleOptionClick}/>
+            <SideBar  onOptionClick={handleOptionClick}/> 
           </div>
           <div className='rightFrame'>
             <ProductView />

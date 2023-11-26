@@ -1,7 +1,7 @@
 import React from 'react'
 import '../styles/customersidebar.css'
 
-export default function DashboardMenue({ onOptionClick }) {
+export default function DashboardMenue({ onOptionClick }) {//called from productPage
 
   const handleOptionClick = (option) => {
     onOptionClick(option);

@@ -1,22 +1,22 @@
 import React, { useEffect, useState } from 'react';
 import '../styles/productView.css'
 import axios from 'axios';
+import {selectedOption} from '../pages/ProductPage.js';
 
 const images = require.context('../../public/loadimages', true);
 const imageList = images.keys().map(image => images(image));
 
 function ProductView() {
+  const [products, setProducts] = useState([])
 
-  const [products,setProducts] = useState([])
+  useEffect(() => {
+    loadProducts(selectedOption); //option parameter which gets the selected category from the sidebar
+  });
 
-  useEffect(()=>{
-    loadProducts();    
-  },[])
-
-  const loadProducts = async()=> {
-    const result = await axios.get("http://localhost:8083/product/getProduct");
+  const loadProducts = async (selectedOption) => { //gets the selected option recieved from parameter as selectedOption
+    const result = await axios.get(`http://localhost:8083/product/getProduct/${selectedOption}`); 
     setProducts(result.data);
-  }
+  };
 
 
   return (
@@ -26,7 +26,7 @@ function ProductView() {
           products.map((product,index)=>(
             <div className='productsCard'>
               <div className='productImage'>
-                 <img src={`${process.env.PUBLIC_URL}/loadimages/${product.filePath}.jpeg`} alt={`image-${index}`} />
+                 <img src={`${process.env.PUBLIC_URL}/loadimages/${product.filePath}.png`} alt={`image-${index}`} />
                  {/* <img src={product.filePath} alt={`image-${index}`} /> */}
               </div>
               <div className='productName'>

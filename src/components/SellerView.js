@@ -56,15 +56,18 @@ const createProduct = (file) => { //gets file from
         // Handle any errors that occurred during the request
         console.error('Error:', error);
       })
+  }
 
+  useEffect(() => {
+    loadOrders();
+  })
 
-
-  // this below to display order details to the Seller
-  const loadProducts = async()=> {
+   // this below to display order details to the Seller
+   const loadOrders = async()=> {
     const result = await axios.get("http://localhost:8083/order/getOrder");
     setSellerOrder(result.data);
   }
-}
+
 
   return (
     <div>
@@ -161,6 +164,7 @@ const createProduct = (file) => { //gets file from
           </div>
       )}
 
+
       {selectedOption === 'Order' && (
 
         <div className='orderDetails'>
@@ -202,19 +206,20 @@ const createProduct = (file) => { //gets file from
                     <td>Hello</td>
                     <td>Hello</td>
                   </tr>
-                  <tr>
+                  
                     {
                       sellerOrders.map((order,index)=>(
-
+                      <tr>
                         <React.Fragment key={index}>  //group multiple elements without adding an extra node to the DOM.
                           <td>{order.customerName}</td>
                           <td>{order.address}</td>
                           <td>{order.productName}</td>
                           <td>{order.status}</td>
                         </React.Fragment>
+                        </tr>
+
                       ))
                     }
-                  </tr>
                 </tbody>
               </table>
 
