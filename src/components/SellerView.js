@@ -72,7 +72,7 @@ const createProduct = (file) => { //gets file from
 
                   <label htmlFor="productCategory">Product Category*</label>
                     <select id="productCategory" name="productCategory" onSelect={(e) => setCategory(e.target.value)} required>
-                        <option value="null">--Select--</option>
+                        <option value="null">--Selects--</option>
                         <option value="woodwork">Woodwork</option>
                         <option value="textiles">Textiles</option>
                         <option value="basketry">Basketry</option>
