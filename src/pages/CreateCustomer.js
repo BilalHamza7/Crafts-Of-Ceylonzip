@@ -27,17 +27,17 @@ export default function AccountCreation() {
     .then(response =>{
       if(response.data){
         axios.post('http://localhost:8081/customer/recordCredentials',{ //stores customer credentials
-          id: response.data.id, //gets the id value from the first response 
           password: password,
           username: username
         })
          .then(response2 =>{
-          if(response2.data === response.data.id){//verifies if the customers id and login id is matching
+          if(response2.data){//verifies if the customers login is not null
+            alert("Account created Successfully!.")
             navigate("/user/product")
           }
           else{
             alert("Please check your username and password.")
-          }
+          } 
         })
       }
       else{
@@ -60,13 +60,13 @@ export default function AccountCreation() {
               <input type="text" id="txtFullName" name='name' autoComplete='off' onChange={(e) => setName(e.target.value)} required/><br/>
 
               <label htmlFor="txtEmail">Email</label><br/>
-              <input type="email" id="txtEmail" name='email'autoComplete='off' onChange={(e) => setEmail(e.target.value)} required/><br/>
+              <input type="email" id="txtEmail" name='email' autoComplete='off' onChange={(e) => setEmail(e.target.value)} required/><br/>
 
               <label htmlFor="txtMobileNumber">Mobile Number</label><br/>
               <input type="text" id="txtMobileNumebr" name='mobileNumber' autoComplete='off' onChange={(e) => setMobileNumber(e.target.value)} required/><br/>
 
               <label htmlFor="txtAddress">Address</label><br/>
-              <textarea id="txtAddress" rows="5" autoComplete='off'onChange={(e) => setAddress(e.target.value)} required></textarea><br/>
+              <textarea id="txtAddress" rows="5" autoComplete='off' onChange={(e) => setAddress(e.target.value)} required></textarea><br/>
 
               <input type='submit' value="Continue" id='btnSubmit'/>
               <p>By continuing, you agree to Crafts of Ceylon’s <span>Conditions of Use</span><br/> and <span>Privacy Notice.</span></p>

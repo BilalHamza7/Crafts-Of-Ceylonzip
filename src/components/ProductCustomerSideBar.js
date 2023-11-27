@@ -22,7 +22,6 @@ export default function DashboardMenue({ onOptionClick }) {//called from product
             <li onClick={() => handleOptionClick('Traditional Batiks')}>Traditional Batiks</li>
             <li onClick={() => handleOptionClick('Traditional Masks')}>Traditional Masks</li>
           </ul>
-
         </div>
         {/* <div className='filterbyPrice'>
 

@@ -3,6 +3,8 @@ import { Header, WhiteLine1, Footer } from '../components/UserManagment';
 import '../styles/sellerLogin.css'
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+export var loginCusId;
+
 
 export default function Login() {
 

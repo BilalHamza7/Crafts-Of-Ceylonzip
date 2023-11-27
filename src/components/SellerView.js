@@ -8,11 +8,19 @@ export default function SellerView({ selectedOption }) { // (pro)--comes in Obje
 
 const [imagePreview, setImagePreview] = useState(null);
 const [sellerOrders, setSellerOrder] = useState([])
+var file;
 
+const [name, setName] = useState('');
+const [description, setDescription] = useState('');
+const [category, setCategory] = useState('');
+const [price, setPrice] = useState('');
+const [weight, setWeight] = useState('');
+const [filePath, setfilePath] = useState('');
 
 //to display the image in frontend
  const onSelectedFile = (event) => {
-    const file = event.target.files[0];
+    file = event.target.files[0];
+    setfilePath(file.name);
 
     if (file) {
       const reader = new FileReader();
@@ -27,30 +35,24 @@ const [sellerOrders, setSellerOrder] = useState([])
     }
 };
 
-const [name, setName] = useState('');
-const [description, setDescription] = useState('');
-const [category, setCategory] = useState('');
-const [price, setPrice] = useState('');
-const [weight, setWeight] = useState('');
-const [filePath, setfilePath] = useState('');
+
     
 //to store image
-const createProduct = (file) => { //gets file from 
-  const formData = new FormData();
-  formData.append('filePath', filePath);
-  formData.append('name', name);
-  formData.append('description', description);
-  formData.append('category', category);
-  formData.append('price', price);
-  formData.append('weight', weight);
+const createProduct = (event) => { //gets file from 
+   event.preventDefault();
+   alert("in"+filePath)
 
-   file.preventDefault();
+  axios.post('http://localhost:8083/product/createProduct', {
+    name: name,
+    description: description,
+    category: category,
+    price: price,
+    weight: weight,
+    filePath: filePath
 
-  axios.post('http://localhost:8083/product/createProduct', formData)
-    .then((response) => response.json())
-      .then((data) => {
-        // Here you can handle the response from the server
-        console.log('Server response:', data);
+  })
+    .then((response) => {
+        alert("product submitted in "+filePath);
       })
       .catch((error) => {
         // Handle any errors that occurred during the request
@@ -86,11 +88,16 @@ const createProduct = (file) => { //gets file from
                   <form onSubmit={createProduct} >
 
                   <label htmlFor="productCategory">Product Category*</label>
-                    <select id="productCategory" name="productCategory" onSelect={(e) => setCategory(e.target.value)} required>
+                    <select id="productCategory" name="productCategory" onChange={(e) => setCategory(e.target.value)} required>
                         <option value="null">--Selects--</option>
                         <option value="woodwork">Woodwork</option>
+                        <option value="metalwork">Metalwork</option>
                         <option value="textiles">Textiles</option>
+                        <option value="potteryAndCeramics">Pottery and Ceramics</option>
                         <option value="basketry">Basketry</option>
+                        <option value="bambooAndReedCraft">Bamboo and Reed Craft</option>
+                        <option value="woodwork">Traditional Batiks</option>
+                        <option value="woodwork">Traditional Masks</option>
                     </select><br/>
 
                     <label htmlFor="productName">Product Name*</label>
@@ -99,11 +106,11 @@ const createProduct = (file) => { //gets file from
                     <label htmlFor="productPrice">Product Price*</label>
                     <input type="text" id="productPrice" name='productPrice' autoComplete='off'  onChange={(e) => setPrice(e.target.value)} required/><br/>
                     
-                    <label htmlFor="productDescription">Product Description*</label>
-                    <textarea id="productDescription" rows="5" name='productDescription' autoComplete='off'  onChange={(e) => setDescription(e.target.value)} required></textarea><br/>
+                    <label htmlFor="productDescription">Product Description</label>
+                    <textarea id="productDescription" rows="5" name='productDescription' autoComplete='off'  onChange={(e) => setDescription(e.target.value)}></textarea><br/>
 
-                    <label htmlFor="productWeight">Item Weight (Kg)*</label>
-                    <input type="number" id="productWeight" name='productWeight' autoComplete='off'  onChange={(e) => setWeight(e.target.value)} required/>
+                    <label htmlFor="productWeight">Item Weight (Kg)</label>
+                    <input type="number" id="productWeight" name='productWeight' autoComplete='off'  onChange={(e) => setWeight(e.target.value)}/>
 
                     <div className='submitButton'>
                       <input type="submit" style={{fontSize: "84%"}}value="Submit Product"/>
@@ -169,7 +176,7 @@ const createProduct = (file) => { //gets file from
 
         <div className='orderDetails'>
           <div className='filter'>
-            <input type="text" name="search" placeholder='Search..' autocomplete="off"/>
+            <input type="text" name="search" placeholder='Search..' autoComplete="off"/>
             <select>
               <option value="Category">Category</option> 
               <option>Database</option>
@@ -230,7 +237,7 @@ const createProduct = (file) => { //gets file from
         <div className='orderDetails'>
           <div className='filter'>
 
-          <input type="text" name="search" placeholder='Search..' autocomplete="off"/>
+          <input type="text" name="search" placeholder='Search..' autoComplete="off"/>
             <select>
               <option value="Category">Category</option> 
               <option>Database</option>
