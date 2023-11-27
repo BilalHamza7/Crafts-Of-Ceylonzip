@@ -52,7 +52,7 @@ const createProduct = (event) => { //gets file from
 
   })
     .then((response) => {
-        alert("product submitted in "+filePath);
+        alert("product submitted in"+filePath);
       })
       .catch((error) => {
         // Handle any errors that occurred during the request
