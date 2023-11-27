@@ -7,7 +7,6 @@ import Elephant from '../images/elephant.png';
 import Drum from '../images/drum.png';
 import Mask from '../images/mask.png';
 import '../styles/home.css'
-import ProductView from '../components/ProductView';
 
 
 export default function Home() {
