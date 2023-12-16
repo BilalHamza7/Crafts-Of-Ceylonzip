@@ -21,7 +21,6 @@ export default function Login() {
     .then(response =>{
       if(response.data){
         loginCusId = response.data.id
-        alert(loginCusId)
         navigate("/user/product")
       }
       else{

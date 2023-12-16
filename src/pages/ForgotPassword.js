@@ -1,49 +1,44 @@
 import { Label } from '@mui/icons-material';
-import React, {useRef, useState} from 'react'
+import React,{useRef, useState} from 'react'
 import { Link, Navigate, useNavigate } from 'react-router-dom';
 import { Header, WhiteLine1, Footer } from '../components/UserManagment';
 import '../styles/forgotpassword.css'
 import emailjs from '@emailjs/browser'
 
-
 export default function ForgotPassword() {
-
-    const navigate = useNavigate();
 
     const goBack = () => {
             window.history.go(-1); // This will navigate back one step in the history
     };
 
-    const [enteredOtp, setEnteredOtp] = useState('');
-    const otp = 4231;
+    const navigate = useNavigate();
+
+    const [userOtp, setUserOtp] = useState('');
 
     const form = useRef();
+    const otp = 7566;
 
     const sendEmail = (e) => {
         e.preventDefault();
-
-        const templateParams = {
-            otp: otp
-        };
     
-        emailjs.send('service_xrmkpqr', 'template_vvyn3kb', templateParams, '0wIuJp-cMzszQ-_HK')
-            .then((result) => {
-                alert("email sent")
-                console.log(result.text);
-            }, (error) => {
-                console.log(error.text);
-            });
+        emailjs.sendForm('service_xrmkpqr', 'template_vvyn3kb', form.current, '0wIuJp-cMzszQ-_HK')
+          .then((result) => {
+            console.log(result.text);
+          }, (error) => {
+            console.log(error.text);
+          });
     };
 
     const handleEmail = (e) => {
-        e.preventDefault()
+        e.preventDefault();
 
-        if(enteredOtp === otp)
-        {
-            navigate("/user/product");
-        }
-        else{
-            alert("The otp entered is incorrect.")
+        alert(userOtp)
+
+        if(userOtp === otp){
+            alert("OTP verified.")
+            navigate("/src/pages/ProductPage.js")
+        }else{
+            alert("Incorrect OTP.")
         }
     }
 
@@ -56,14 +51,12 @@ export default function ForgotPassword() {
             <h3>Forgot your password?</h3><br/>
             <form ref={form} onSubmit={handleEmail}>
                 <label htmlFor='txtEmail' style={{marginBottom:"5px"}}>Email</label>
-                <input type="email" id="email" name='email' autoComplete='off' style={{marginBottom:"15px"}}/>
-
+                <input type="email" id="txtEmail" name='email'autoComplete='off' style={{marginBottom:"15px"}}/>
                 <div className='otpSend'>
                     <button id='btnSend' onClick={sendEmail}>Send OTP</button>
                 </div>
-                
-                   <label>Enter OTP</label>
-                    <input type="number" id="txtOtp" name="otp" autoComplete='off' onChange={(e) => setEnteredOtp(e.target.value)} style={{marginBottom:"15px"}}/>
+                    <label>Enter OTP</label>
+                    <input type="otp" id="txtOtp" name='otp'autoComplete='off' onChange={(e) => setUserOtp(e.target.value)} required style={{marginBottom:"15px"}}/>
 
                     <div>
                         <label>New Password</label>
