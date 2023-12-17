@@ -4,9 +4,9 @@ import '../styles/accountDetails.css'
 import { useEffect } from 'react';
 import { loginCusId } from '../pages/LoginCustomer';
 import axios from 'axios';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
-export default function AccountDetails() {
+export default function AccountDetails({selectedOption}) {
     const [name,setName] = useState('');
     const [email,setemail] = useState('');
     const [mobileNumber,setmobileNumber] = useState('');
@@ -17,6 +17,8 @@ export default function AccountDetails() {
     const [oldPassword,setOldPassword] = useState('');
     const [newPassword,setNewPassword] = useState('');
     const id = loginCusId;
+
+    
 
     const navigate = useNavigate();
 

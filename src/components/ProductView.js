@@ -35,10 +35,6 @@ function ProductView() {
               <div className='productPrice'>
                  <p>LKR {product.price}</p>
               </div> 
-              {/* <div className='productDescription'>
-                 <p>Description: {product.type}</p>
-              </div>  */}
-
             </div>
           ))
         }

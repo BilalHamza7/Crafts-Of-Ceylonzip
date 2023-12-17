@@ -1,23 +1,30 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import '../styles/sellerview.css'
+import '../styles/productView.css'
 import AddImage from '../images/addImage.png';
 import SellerAccountDetails from './SellerAccountDetails';
+import { loginSelId } from '../pages/LoginSeller';
+import { useParams } from 'react-router-dom';
 
 export default function SellerView({ selectedOption }) { // (pro)--comes in Object form or ({ selected})
 
 const [imagePreview, setImagePreview] = useState(null);
 const [sellerOrders, setSellerOrder] = useState([])
+const [sellerSales, setSellerSale] = useState([])
 var file;
 
 const [name, setName] = useState('');
+const [selId, setSelId] = useState(loginSelId);
 const [description, setDescription] = useState('');
 const [category, setCategory] = useState('');
 const [price, setPrice] = useState('');
 const [weight, setWeight] = useState('');
 const [filePath, setfilePath] = useState('');
 
-//to display the image in frontend
+const [products, setProducts] = useState([]) //to display my products
+
+  //to display the image in frontend
  const onSelectedFile = (event) => {
     file = event.target.files[0];
     setfilePath(file.name);
@@ -36,21 +43,32 @@ const [filePath, setfilePath] = useState('');
 };
 
 
-    
-//to store image
-const createProduct = (event) => { //gets file from 
+//error with the axios request of below
+  // useEffect(() => {
+  //   loadProducts();
+  // },[])
+
+  // const loadProducts = async() => { //gets the selected option recieved from parameter as selectedOption
+  //   const myProducts = await axios.get(`http://localhost:8083/product/getMyProduct`, null, {
+  //     selId: selId
+  //   } ); 
+  //   setProducts(myProducts.data);
+  // };
+
+
+  //to store image
+  const createProduct = (event) => {
    event.preventDefault();
-   alert("in"+filePath)
 
-  axios.post('http://localhost:8083/product/createProduct', {
-    name: name,
-    description: description,
-    category: category,
-    price: price,
-    weight: weight,
-    filePath: filePath
-
-  })
+    axios.post('http://localhost:8083/product/createProduct', {
+      name: name,
+      selId: selId,
+      description: description,
+      category: category,
+      price: price,
+      weight: weight,
+      filePath: filePath
+    })
     .then((response) => {
         alert("product submitted in"+filePath);
       })
@@ -62,25 +80,41 @@ const createProduct = (event) => { //gets file from
 
   useEffect(() => {
     loadOrders();
-  })
+  },[])
+
+  useEffect(() => {
+    loadSales();
+  },[])
 
    // this below to display order details to the Seller
-   const loadOrders = async()=> {
+  const loadOrders = async()=> {
     const result = await axios.get("http://localhost:8083/order/getOrder");
     setSellerOrder(result.data);
   }
 
+  const loadStatus = "DELIVERED";
+  function loadSales(){
+    const filteredOrders = sellerOrders.filter(order => order.status === loadStatus);
+    setSellerSale(filteredOrders)
+  }
+
+  const formatDate = (dateString) => {
+    const options = { year: 'numeric', month: 'numeric', day: 'numeric' };
+    const formattedDate = new Date(dateString).toLocaleDateString(undefined, options);
+    return formattedDate;
+  };
+
 
   return (
     <div>
-      {(!selectedOption || selectedOption === 'Product') && (
+      {(!selectedOption || selectedOption === 'New Product') && (
 
           <div className='productOption'>
 
             <div className='column1'>
 
                 <div className='productDetailHeading1'>
-                  <h4>Add Your Product Details</h4>
+                  <h2>Add Your Product Details</h2>
                 </div>
 
                 <div className='productDetail1'>
@@ -166,11 +200,34 @@ const createProduct = (event) => { //gets file from
                   </div>
                 )}
                 
-              </div>              
+              </div>
             </div>
           </div>
       )}
 
+      {selectedOption === 'My Products' && (
+
+      <div className='allProducts'>
+
+      {
+        products.map((product,index)=>(
+          <div className='productsCard'>
+            <div className='productImage'>
+              <img src={`${process.env.PUBLIC_URL}/loadimages/${product.filePath}.png`} alt={`image-${index}`} />
+              {/* <img src={product.filePath} alt={`image-${index}`} /> */}
+            </div>
+            <div className='productName'>
+              <p>{product.name}</p>
+            </div>
+            <div className='productPrice'>
+              <p>LKR {product.price}</p>
+            </div> 
+          </div>
+        ))
+      }
+
+      </div>
+      )}
 
       {selectedOption === 'Order' && (
 
@@ -206,14 +263,7 @@ const createProduct = (event) => { //gets file from
                     <th>ADDRESS</th>
                     <th>PRODUCT</th>
                     <th>STATUS</th>
-                  </tr>
-                  {/* <tr>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                  </tr> */}
-                  
+                  </tr>                  
                     {
                       sellerOrders.map((order,index)=>(
                       <tr>
@@ -260,65 +310,21 @@ const createProduct = (event) => { //gets file from
                       <th>ADDRESS</th>
                       <th>PRODUCT</th>
                       <th>PRICE</th>
-                      <th>DATTE</th>
+                      <th>DATE</th>
                     </tr>
-                    <tr>
-                      <td>Sarah Johnson</td>
-                      <td>42, Jayantha Mawatha, Colombo-07</td>
-                      <td>Hand-carved Wooden Elephant</td>
-                      <td>LKR 2,500</td>
-                      <td>04/10/2021</td>
-                    </tr>
-                    <tr>
-                      <td>Sarah Johnson</td>
-                      <td>42, Jayantha Mawatha, Colombo-07</td>
-                      <td>Hand-carved Wooden Elephant</td>
-                      <td>LKR 2,500</td>
-                      <td>12/04/2023</td>
-                    </tr>
-                    <tr>
-                      <td>Emily Davis</td>
-                      <td>136, Tharindu Gardens, Galle-08</td>
-                      <td>Traditional Sri Lankan Sari</td>
-                      <td>LKR 2,500</td>
-                      <td>12/04/2019</td>
-                    </tr>
-                    <tr>
-                      <td>Michael Elisa Johnson</td>
-                      <td>42, Jayantha Mawatha, Colombo-07</td>
-                      <td>Original Cotten Wooden Dress</td>
-                      <td>LKR 11,950</td>
-                      <td>12/04/2023</td>
-                    </tr>
-                    <tr>
-                      <td>Sarah Johnson</td>
-                      <td>42, Jayantha Mawatha, Colombo-07</td>
-                      <td>Hand-carved Wooden Elephant</td>
-                      <td>LKR 2,500</td>
-                      <td>31/12/2015</td>
-                    </tr>
-                    <tr>
-                      <td>Sarah Johnson</td>
-                      <td>42, Jayantha Mawatha, Colombo-07</td>
-                      <td>Hand-carved Wooden Elephant</td>
-                      <td>LKR 2,500</td>
-                      <td>12/04/2023</td>
-                    </tr>
-                    <tr>
-                      <td>Sarah Johnson</td>
-                      <td>42, Jayantha Mawatha, Colombo-07</td>
-                      <td>Hand-carved Wooden Elephant</td>
-                      <td>LKR 2,500</td>
-                      <td>12/04/2023</td>
-                    </tr>
-                    <tr>
-                      <td>Jonathan Trott</td>
-                      <td>42, Jayantha Mawatha, Colombo-07</td>
-                      <td>Hand-carved Wooden Elephant</td>
-                      <td>LKR 2,500</td>
-                      <td>12/04/2023</td>
-                    </tr>
-
+                    {
+                      sellerSales.map((order,index)=>(
+                        <tr key={index}> {/* Ensure key is on the outermost element */}
+                        <React.Fragment>
+                          <td>{order.customerName}</td>
+                          <td>{order.address}</td>
+                          <td>{order.productName}</td>
+                          <td>{order.price}</td>
+                          <td>{formatDate(order.orderDate)}</td>
+                        </React.Fragment>
+                      </tr>
+                      ))
+                    }
                   </tbody>
                 </table>
               </div>

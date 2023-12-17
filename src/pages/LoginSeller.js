@@ -3,7 +3,7 @@ import { Header, WhiteLine1, Footer } from '../components/UserManagment';
 import '../styles/sellerLogin.css'
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
-export var loginCusId;
+export var loginSelId;
 
 
 export default function Login() {
@@ -15,14 +15,13 @@ export default function Login() {
 
   const handleLogin = (event) => {
     event.preventDefault();
-    axios.post('http://localhost:8083/seller/verifySeller', null,{
-      params:{
-        username: username,
-        password: password
-      }
+    axios.post('http://localhost:8083/seller/verifySeller',{
+      username: username,
+      password: password
     })
     .then(response =>{
-      if(response.data === true){
+      if(response.data){
+        loginSelId = response.data.id
         navigate("/seller")
       }
       else{

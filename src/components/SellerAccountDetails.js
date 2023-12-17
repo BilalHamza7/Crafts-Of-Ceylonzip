@@ -3,7 +3,7 @@ import React, { useEffect } from 'react'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import '../styles/accountDetails.css'
-import { loginCusId } from '../pages/LoginSeller';
+import { loginSelId } from '../pages/LoginSeller';
 
 export default function AccountDetails() {
 
@@ -17,7 +17,7 @@ export default function AccountDetails() {
     const [password,setPassword] = useState('');
     const [oldPassword,setOldPassword] = useState('');
     const [newPassword,setNewPassword] = useState('');
-    const id = loginCusId;
+    const id = loginSelId;
 
     const navigate = useNavigate();
 

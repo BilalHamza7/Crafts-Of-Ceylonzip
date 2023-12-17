@@ -22,7 +22,7 @@ export default function UserProfile() {
                 <UserProfileSideBar onOptionClick={handleOptionClick}/>
             </div>
             <div style={{flex:"75%"}}>
-              <AccountDetails />
+              <AccountDetails selectedOption={selectedOption} />
             </div> 
 
         </div>
