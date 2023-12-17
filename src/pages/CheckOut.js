@@ -1,9 +1,14 @@
 import React, { useState } from 'react';
+import format from 'date-fns/format';
 import {NavigationBar3} from '../components/NavigationBar';
 import {Footer} from '../components/UserManagment';
 import Elephant from '../images/elephant.png';
 import Card2 from '../images/card2.png';
 import '../styles/checkout.css'
+import { productName, productPrice, productCategory } from '../components/ProductView';
+import { loginCusId } from './LoginCustomer';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 export default function CheckOut() {
 
@@ -15,9 +20,8 @@ export default function CheckOut() {
     const [province, setProvince] = useState('');
     const [city, setCity] = useState('');
     const [area, setArea] = useState('');
-    const [paymentOption, setPaymentOption] = useState('');
 
-    const unitPrice = 6500;
+    const unitPrice = productPrice;
     const shipping = 3750;
 
     const handleQuantityChange = (e) => {
@@ -32,6 +36,44 @@ export default function CheckOut() {
         return calculateTotalPrice() + shipping;
     };
 
+    const date = format(new Date(), 'yyyy-MM-dd');
+    const navigate = useNavigate();
+
+    const handleOrder = () => {
+        var confirmed = window.confirm("Are you sure to complete the order?")
+        if(confirmed){
+            axios.post('http://localhost:8081/order/placeOrder',{ //submits customer details into database 
+            cusId: loginCusId,
+            productName: productName,
+            address: city,
+            quantity: quantity,
+            price: productPrice,
+            orderDate: date
+            })
+            .then(response =>{
+                if(response.data){
+                    axios.post('http://localhost:8083/order/createOrder',{ //submits customer details into database 
+                    customerName: fullName,
+                    productName: productName,
+                    address: city,
+                    quantity: quantity,
+                    price: productPrice,
+                    orderDate: date,
+                    status: "PENDING"
+                    })
+                    .then(response => {
+                        if(response.data){
+                            alert("Your order is placed Successfully!");
+                            confirmed = window.confirm("Do you want to return to shopping?")
+                            if(confirmed){
+                                navigate(-1)
+                            }
+                        }
+                    })
+                }
+            })
+        }
+    }
 
   return (
     <div>
@@ -49,10 +91,10 @@ export default function CheckOut() {
                             <img src={Elephant} alt="Ordered Product - 01" />
                         </div>
                         <div className='productDetail1'>
-                            <label id='productName'>Elephant Wooden Carving</label>
-                            <label id="productColor" >Color: Brown</label>
-                            <label id='productCategory'>Type: Woodwork</label>
-                            <label>QTY: <input type='number' onChange={handleQuantityChange} value={quantity} max={5} min={1}/>LKR <span id='productPrice'>6500</span></label>
+                            <label id='productName' >{productName}</label>
+                            <label id="productColor">Color: Brown</label>
+                            <label id='productCategory' >Type: {productCategory}</label>
+                            <label>QTY: <input type='number' onChange={handleQuantityChange} value={quantity} max={5} min={1}/>LKR <span id='productPrice'>{productPrice}</span></label>
                         </div>
                     </div>
                     
@@ -130,7 +172,7 @@ export default function CheckOut() {
 
                     <label style={{marginBottom:'18px', fontWeight:'bold'}}>3. ORDER SUMMARY</label>
 
-                    <label><span id='qty' style={{margin:'0'}}>{quantity}</span> x Elephant Wooden Carving<span id='product1Price'>LKR {calculateTotalPrice()}</span></label>
+                    <label><span id='qty' style={{margin:'0'}}>{quantity}</span> x {productName}<span id='product1Price'>LKR {calculateTotalPrice()}</span></label>
 
                     <div className='blackLine' style={{marginBottom:'25px'}}></div>
 
@@ -142,7 +184,7 @@ export default function CheckOut() {
 
                 </div>
                 
-                <button style={{backgroundColor:'rgba(236, 118, 66, 255)', color:'white', padding:'15px 18px 15px 18px' , borderRadius:'8px', border: 'none', marginTop:'17px', fontSize:'102%', cursor:'pointer'}}>COMPLETE ORDER</button>
+                <button style={{backgroundColor:'rgba(236, 118, 66, 255)', color:'white', padding:'15px 18px 15px 18px' , borderRadius:'8px', border: 'none', marginTop:'17px', fontSize:'102%', cursor:'pointer'}} onClick={handleOrder}>COMPLETE ORDER</button>
             </div>
 
         </div>

@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import '../styles/sellerview.css'
-import '../styles/productView.css'
 import AddImage from '../images/addImage.png';
 import SellerAccountDetails from './SellerAccountDetails';
 import { loginSelId } from '../pages/LoginSeller';
-import { useParams } from 'react-router-dom';
 
 export default function SellerView({ selectedOption }) { // (pro)--comes in Object form or ({ selected})
 
@@ -43,17 +41,15 @@ const [products, setProducts] = useState([]) //to display my products
 };
 
 
-//error with the axios request of below
-  // useEffect(() => {
-  //   loadProducts();
-  // },[])
+// error with the axios request of below
+  useEffect(() => {
+    loadProducts();
+  },[])
 
-  // const loadProducts = async() => { //gets the selected option recieved from parameter as selectedOption
-  //   const myProducts = await axios.get(`http://localhost:8083/product/getMyProduct`, null, {
-  //     selId: selId
-  //   } ); 
-  //   setProducts(myProducts.data);
-  // };
+  const loadProducts = async() => { //gets the selected option recieved from parameter as selectedOption
+    const myProducts = await axios.get(`http://localhost:8083/product/getMyProduct/${selId}`)
+    setProducts(myProducts.data);
+  };
 
 
   //to store image
@@ -174,8 +170,6 @@ const [products, setProducts] = useState([]) //to display my products
                   <div className='submitButton'>
                       <input type="submit" value="Submit Product" formAction=''/>
                   </div>
-
-
 
             </div>
             <div className='column2'>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
 import '../styles/navigationbar1.css';
 import userImage from '../images/user11.png';
 import search from '../images/search.png';
@@ -51,11 +51,19 @@ export function NavigationBar2() {
 }
 
 export function NavigationBar3() {
+  const navigate = useNavigate();
+
+  function goBackOnePage() {
+    navigate(-1); // This is equivalent to navigate.goBack()
+  }
   return (
     <nav className="navbar">
       <div className="navLeft">
             <Link id='title' to="/">Craft of Ceylon.</Link>
         </div>
+      <div className="navRight">
+            <label style={{fontSize:"15px", fontWeight:"bolder", cursor:"pointer"}} onClick={goBackOnePage}> &lt; Continue Shopping </label>
+      </div>
     </nav>
   )
 }

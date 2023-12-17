@@ -17,7 +17,7 @@ export default function AccountCreation() {
   const navigate = useNavigate();
 
   const handleLogin = (event) => {
-    event.preventDefault();
+    event.preventDefault(); 
     axios.post('http://localhost:8081/customer/createCustomer',{ //submits customer details into database 
       name: name,
       email: email,

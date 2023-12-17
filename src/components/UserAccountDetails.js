@@ -18,9 +18,19 @@ export default function AccountDetails({selectedOption}) {
     const [newPassword,setNewPassword] = useState('');
     const id = loginCusId;
 
-    
+    const [sellerOrder, setSellerOrder] = useState('')
 
     const navigate = useNavigate();
+
+    useEffect(() => {
+        getOrders();
+    },[]);  
+
+    const getOrders = async () => {
+        const cusOrder = await axios.get(`http://localhost:8081/order/getOrder/${id}`);
+        setSellerOrder(cusOrder.data);
+    }
+
 
     useEffect(() => {
         getDetails();
@@ -78,52 +88,118 @@ export default function AccountDetails({selectedOption}) {
         else{
             alert("The password you is incorrect.")
         }
-        
     }
 
+    const formatDate = (dateString) => {
+        const options = { year: 'numeric', month: 'numeric', day: 'numeric' };
+        const formattedDate = new Date(dateString).toLocaleDateString(undefined, options);
+        return formattedDate;
+      };
+
+
   return (
-    <div className='accountDatails'>
 
-        <div className='navLefts'>
-            <label className='titleDetails'>YOUR PROFILE DETAILS</label>
-            <form onSubmit={handleAccountDetailsUpdate}>
+    <div>
+      {(!selectedOption || selectedOption === 'Account Details') && (
+        <div className='accountDatails'>
 
-                <label htmlFor="txtFullName">Your name*</label>
-                <input type="text" value={name} id="txtFullName" name='name' autoComplete='off' onChange={(e) => setName(e.target.value)} required/>
+            <div className='navLefts'>
+                <label className='titleDetails'>YOUR PROFILE DETAILS</label>
+                <form onSubmit={handleAccountDetailsUpdate}>
 
-                <label htmlFor="txtEmail">Email*</label>
-                <input type="email" value={email} id="txtEmail" name='email'autoComplete='off' onChange={(e) => setemail(e.target.value)} required/>
-                
-                <label htmlFor="txtmobilenumber">Mobile Number*</label>
-                <input type="number" value={mobileNumber} id="txtmobilenumber" name='txtmobilenumber'autoComplete='off' onChange={(e) => setmobileNumber(e.target.value)} required/>
+                    <label htmlFor="txtFullName">Your name*</label>
+                    <input type="text" value={name} id="txtFullName" name='name' autoComplete='off' onChange={(e) => setName(e.target.value)} required/>
 
-                <label htmlFor="txtusername">Username*</label>
-                <input type="text" value={username} id="txtusername" name='txtusername'autoComplete='off' onChange={(e) => setUsername(e.target.value)} required/>
+                    <label htmlFor="txtEmail">Email*</label>
+                    <input type="email" value={email} id="txtEmail" name='email'autoComplete='off' onChange={(e) => setemail(e.target.value)} required/>
+                    
+                    <label htmlFor="txtmobilenumber">Mobile Number*</label>
+                    <input type="number" value={mobileNumber} id="txtmobilenumber" name='txtmobilenumber'autoComplete='off' onChange={(e) => setmobileNumber(e.target.value)} required/>
 
-                <label htmlFor="txtsecondaryaddress">Address*</label>
-                <input type="text" value={address} id="txtsecondaryaddress" name='txtsecondaryaddress'autoComplete='off' onChange={(e) => setAddress(e.target.value)} required/>
+                    <label htmlFor="txtusername">Username*</label>
+                    <input type="text" value={username} id="txtusername" name='txtusername'autoComplete='off' onChange={(e) => setUsername(e.target.value)} required/>
 
-                <input type='submit' value="Continue" id='btnUpdateProfile'/>
+                    <label htmlFor="txtsecondaryaddress">Address*</label>
+                    <input type="text" value={address} id="txtsecondaryaddress" name='txtsecondaryaddress'autoComplete='off' onChange={(e) => setAddress(e.target.value)} required/>
 
-            </form>
+                    <input type='submit' value="Continue" id='btnUpdateProfile'/>
+
+                </form>
+            </div>
+
+            <div className='navRight'>
+                <label className='titleResetPassword'>RESET PASSWORD</label>
+                <form onSubmit={handleResetPassword}>
+                    <label htmlFor="txtusername">Current Password*</label>
+                    <input type="text" value={password} id="txtresetusername" name='txtusername'autoComplete='off' onChange={(e) => setPassword(e.target.value)} required/>
+
+                    <label htmlFor="txtpassword">New Password*</label>
+                    <input type="password" value={newPassword} id="txtpassword" name='txtpassword'autoComplete='off' onChange={(e) => setNewPassword(e.target.value)} required/>
+
+                    <label htmlFor="txtconfirmpassword">Confirm New Password*</label>
+                    <input type="password" id="txtconfirmpassword" name='txtconfirmpassword'autoComplete='off'/>
+
+                    <input type='submit' value="Continue" id='btnResetPassword'/>
+
+                </form>
+            </div>
         </div>
+      )}
+      {selectedOption === "My Orders" && (
 
-        <div className='navRight'>
-            <label className='titleResetPassword'>RESET PASSWORD</label>
-            <form onSubmit={handleResetPassword}>
-                <label htmlFor="txtusername">Current Password*</label>
-                <input type="text" value={password} id="txtusername" name='txtusername'autoComplete='off' onChange={(e) => setPassword(e.target.value)} required/>
+        <div className='orderDetails'>
+        <div className='filter'>
 
-                <label htmlFor="txtpassword">New Password*</label>
-                <input type="password" value={newPassword} id="txtpassword" name='txtpassword'autoComplete='off' onChange={(e) => setNewPassword(e.target.value)} required/>
+        <input type="text" name="search" placeholder='Search..' autoComplete="off"/>
+        <select>
+            <option value="Category">Product</option> 
+            <option>Database</option>
+            <option>Search</option>
+        </select>
 
-                <label htmlFor="txtconfirmpassword">Confirm New Password*</label>
-                <input type="password" id="txtconfirmpassword" name='txtconfirmpassword'autoComplete='off'/>
+        <select>
+            <option value="filterBy">Filter By</option>
+            <option>Price</option>
+            <option>Product</option>
+        </select>
 
-                <input type='submit' value="Continue" id='btnResetPassword'/>
+        <div className='orderDetailsFromDatabase'>
+            <div className='columnNames'>
 
-            </form>
+            <table>
+                <tbody>
+                <tr>
+                    <th>PRODUCT</th>
+                    <th>QUANTITY</th>
+                    <th>PRICE</th>
+                    <th>DATE</th>
+                </tr>
+                <tr>
+                    <td>skdlfj</td>
+                    <td>skdflja</td>
+                    <td>123</td>
+                    <td>2102-1-21</td>
+                </tr>
+                </tbody>
+            </table>
+            </div>
         </div>
+        </div>
+        </div>
+        )}
     </div>
   )
 }
+
+// {
+//     sellerOrder.map((order,index)=>(
+//     <tr key={index}> {/* Ensure key is on the outermost element */}
+//     <React.Fragment>
+//         <td>{order.productName}</td>
+//         <td>{order.quantity}</td>
+//         <td>{order.price}</td>
+//         <td>{formatDate(order.orderDate)}</td>
+//     </React.Fragment>
+//     </tr>
+//     ))
+// }
