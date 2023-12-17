@@ -23,12 +23,18 @@ export default function DashboardMenue({ onOptionClick }) {//called from product
             <li onClick={() => handleOptionClick('Traditional Masks')}>Traditional Masks</li>
           </ul>
         </div>
-        {/* <div className='filterbyPrice'>
+        <div className='filterbyPrice'>
 
           <h3>Filter By Price</h3>
+          <input
+            type="range"
+            min="650"
+            max="20000"
+            value={1}
+            style={{ width: '100%', color: "black"}}/>
 
-        </div> */}
-
+          <label style={{ paddingLeft: '19px',fontSize:'108%'}}>Price: LKR 650 - LKR 20,000</label>
+        </div>
     </div>
   )
 }

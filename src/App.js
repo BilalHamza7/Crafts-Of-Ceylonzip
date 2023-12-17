@@ -12,6 +12,7 @@ import Product from './pages/ProductPage';
 import LoginSeller from './pages/LoginSeller';
 import NewFAQ from './pages/NewFAQ';
 import UserProfile from './pages/UserProfile';
+import CheckOut from './pages/CheckOut';
 
 
 // import Login from './pages/AccountCreation';
@@ -37,6 +38,7 @@ function App() {
           <Route path="/seller" element={<Seller/>}/>
           <Route path="/loginseller" element={<LoginSeller/>}/>
           <Route path="/user/detail" element={<UserProfile/>}/>
+          <Route path="/checkout" element={<CheckOut/>}/>
           
 
           {/* <Route path="/accountcreate" element={<CreateAccount/>}/> */}
