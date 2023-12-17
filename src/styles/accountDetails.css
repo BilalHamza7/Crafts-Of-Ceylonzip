@@ -33,7 +33,7 @@
   
   .accountDatails .navLefts form, .accountDatails .navRight form{
     width: 400px;
-    border: 2px solid rgb(133, 132, 13);
+    box-shadow: 0 0 3px rgba(75, 74, 74, 0.4), 0 0 4px rgba(75, 74, 74, 0.4);
     border-radius: 10px;
     padding: 30px;
   }
