@@ -96,6 +96,10 @@ span {
     width: 100%;
     box-sizing: border-box;
     padding: 6%;
+    background-image: url('../images/srilankaBackground.png'); /* Replace 'your-image-path.jpg' with the actual path to your image */
+    background-size: cover; /* Adjust the background size as needed */
+    background-position: center; /* Adjust the background position as needed */
+    justify-content: center;
 }
 .articleOne, .articleTwo, .articleThree{
     display: flex;

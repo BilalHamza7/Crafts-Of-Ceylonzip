@@ -18,7 +18,7 @@ const [description, setDescription] = useState('');
 const [category, setCategory] = useState('');
 const [price, setPrice] = useState('');
 const [weight, setWeight] = useState('');
-const [filePath, setfilePath] = useState('');
+const [filePath, setfilePath] = useState();
 
 const [products, setProducts] = useState([]) //to display my products
 
@@ -128,16 +128,16 @@ const [products, setProducts] = useState([]) //to display my products
                         <option value="bambooAndReedCraft">Bamboo and Reed Craft</option>
                         <option value="woodwork">Traditional Batiks</option>
                         <option value="woodwork">Traditional Masks</option>
-                    </select><br/>
+                    </select>
 
                     <label htmlFor="productName">Product Name*</label>
-                    <input type="text" id="productName" name='productName' autoComplete='off'  onChange={(e) => setName(e.target.value)} value={name} required/><br/>
+                    <input type="text" id="productName" name='productName' autoComplete='off'  onChange={(e) => setName(e.target.value)} value={name} required/>
 
                     <label htmlFor="productPrice">Product Price*</label>
-                    <input type="text" id="productPrice" name='productPrice' autoComplete='off'  onChange={(e) => setPrice(e.target.value)} required/><br/>
+                    <input type="text" id="productPrice" name='productPrice' autoComplete='off'  onChange={(e) => setPrice(e.target.value)} required/>
                     
                     <label htmlFor="productDescription">Product Description</label>
-                    <textarea id="productDescription" rows="5" name='productDescription' autoComplete='off'  onChange={(e) => setDescription(e.target.value)}></textarea><br/>
+                    <textarea id="productDescription" rows="5" name='productDescription' autoComplete='off'  onChange={(e) => setDescription(e.target.value)}></textarea>
 
                     <label htmlFor="productWeight">Item Weight (Kg)</label>
                     <input type="number" id="productWeight" name='productWeight' autoComplete='off'  onChange={(e) => setWeight(e.target.value)}/>
@@ -156,10 +156,10 @@ const [products, setProducts] = useState([]) //to display my products
                   <form >
 
                     <label htmlFor="productLength">Length*</label>
-                    <input type="number" id="productLength" name='productLength' autoComplete='off'/><br/>
+                    <input type="number" id="productLength" name='productLength' autoComplete='off'/>
 
                     <label htmlFor="productBreadth">Breadth *</label>
-                    <input type="number" id="productBreadth" name='productBreadth' autoComplete='off'/><br/>
+                    <input type="number" id="productBreadth" name='productBreadth' autoComplete='off'/>
 
                     <label htmlFor="productWidth">Width*</label>
                     <input type="number" id="productWidth" name='productWidth' autoComplete='off'/>
@@ -264,7 +264,7 @@ const [products, setProducts] = useState([]) //to display my products
                           <td>{order.customerName}</td>
                           <td>{order.address}</td>
                           <td>{order.productName}</td>
-                          <td className={order.status}>{order.status}</td>
+                          <td className={order.status}>{order.status}</td>  // Lets add a button & then when user clicks the status a a drop down should be displayed and hidden , also sing the index lets update the record.. i need the back end to do that
                         </React.Fragment>
                         </tr>
                       ))

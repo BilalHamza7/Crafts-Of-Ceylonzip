@@ -8,7 +8,6 @@ import Drum from '../images/drum.png';
 import Mask from '../images/mask.png';
 import '../styles/home.css'
 
-
 export default function Home() {
     const [selectedLanguage, setSelectedLanguage] = useState('English');
 

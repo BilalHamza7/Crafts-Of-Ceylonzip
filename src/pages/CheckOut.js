@@ -10,6 +10,7 @@ import { loginCusId } from './LoginCustomer';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
+
 export default function CheckOut() {
 
     const [quantity, setQuantity] = useState(1);
