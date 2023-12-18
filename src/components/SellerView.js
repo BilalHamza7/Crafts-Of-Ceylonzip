@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import '../styles/sellerview.css'
-import '../styles/productView.css'
 import AddImage from '../images/addImage.png';
 import SellerAccountDetails from './SellerAccountDetails';
 import { loginSelId } from '../pages/LoginSeller';

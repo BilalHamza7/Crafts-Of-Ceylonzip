@@ -17,7 +17,7 @@
     flex-direction: column;
 }
 .column1 .productDetail1, .column1 .productDetail2{
-    border: 3px rgb(183, 179, 179) solid;
+    box-shadow: 0 0 3px rgba(75, 74, 74, 0.4), 0 0 4px rgba(75, 74, 74, 0.4);
     border-radius: 15px;
     padding: 40px;
 }
