@@ -15,7 +15,7 @@ export function UserProfileSideBar({ onOptionClick }) {
 
           <h3>DASHBOARD</h3>
           <div className='sidebarNavLinks'>
-          <Link onClick={() => handleOptionClick('Orders')}>Orders</Link>
+          <Link onClick={() => handleOptionClick('My Orders')}>My Orders</Link>
           <Link onClick={() => handleOptionClick('Account Details')}>Account Details</Link>
           </div>
         </div>
