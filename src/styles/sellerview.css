@@ -5,12 +5,15 @@
 .productOption{
     display: flex;
     padding: 80px;
+    border: 1px solid black;
 }
 .productOption .column1{
     flex: 40%;
+    border: 1px solid black;
 }
 .productOption .column2{
     flex: 60%;
+    border: 1px solid black;
 }
 .productDetail1 form{
     display: flex;
@@ -36,10 +39,11 @@
 
 .column1 .productDetail1 input[type="text"], 
 .column1 .productDetail1 textarea, 
-.column1 .productDetail2 input[type="text"]{
-    width: 95%;
+.column1 .productDetail1 input[type="number"],
+.column1 .productDetail2 input[type="text"],
+.column1 .productDetail2 input[type="number"]{
+    width: 75%;
 }
-
 .column1 input[type="number"], .column1 input[type="text"], .column1 textarea{
     border: 1px rgb(133, 132, 132) solid;
     color: rgb(114, 113, 113);
@@ -56,7 +60,7 @@
 }
 
 .column1 .productDetail1 select{
-    width: 98%;
+    width: 78%;
 }
 
 .column2{
@@ -119,7 +123,7 @@
 .submitButton input[type="submit"]{
     margin-top: 30px;
     padding: 6px;
-    width: 509px;
+    width: 333px;
     height: 35px;
     font-size: 120%;
     cursor: pointer;
