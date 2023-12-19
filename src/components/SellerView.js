@@ -151,8 +151,10 @@ const [products, setProducts] = useState([]) //to display my products
                 <div className='productDetailHeading2'>
                   <h4>Package size (Inch)</h4>
                 </div>
-                <div className='productDetail2'>
 
+            </div>
+            <div className='column2'>
+                <div className='productDetail2'>
                   <form >
 
                     <label htmlFor="productLength">Length*</label>
@@ -169,10 +171,10 @@ const [products, setProducts] = useState([]) //to display my products
                   </div>
                   <div className='submitButton'>
                       <input type="submit" value="Submit Product" formAction=''/>
-                  </div>
+                </div>
 
             </div>
-            <div className='column2'>
+            <div className='column3'>
 
               <div className='clickImageUpload'>
 

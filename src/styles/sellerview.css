@@ -8,18 +8,22 @@
     border: 1px solid black;
 }
 .productOption .column1{
-    flex: 40%;
+    flex: 35%;
     border: 1px solid black;
 }
 .productOption .column2{
-    flex: 60%;
+    flex: 30%;
+    border: 1px solid black;
+}
+.productOption .column3{
+    flex: 35%;
     border: 1px solid black;
 }
 .productDetail1 form{
     display: flex;
     flex-direction: column;
 }
-.column1 .productDetail1, .column1 .productDetail2{
+.column1 .productDetail1, .column2 .productDetail2{
     box-shadow: 0 0 3px rgba(75, 74, 74, 0.4), 0 0 4px rgba(75, 74, 74, 0.4);
     border-radius: 15px;
     padding: 40px;
@@ -60,17 +64,16 @@
 }
 
 .column1 .productDetail1 select{
-    width: 78%;
+    width: 77%;
 }
 
-.column2{
-    margin-top: 34px;
-    margin-left: 70px;
+.column3{
+
     /* background-color: bisque; */
     height: 80vh;
 }
 
-.column2 .clickImageUpload{
+.column3 .clickImageUpload{
     background-color: rgba(217,217,217,255);
     height: 40vh;
     border-radius: 15px;
@@ -84,22 +87,22 @@
     height: 40vh;
 }
 
-.column2 .clickImageUpload img{
+.column3 .clickImageUpload img{
     width: 20%;
     cursor: pointer;
 }
 
-.column2 .clickImageUpload label{
+.column3 .clickImageUpload label{
     font-size: 130%;
     padding: 5%;
 }
 
-.column2 .clickImageUpload label:hover{
+.column3 .clickImageUpload label:hover{
     font-size: 135%;
     cursor: pointer;
 }
 
-.column2 .clickImageUpload input{
+.column3 .clickImageUpload input{
     display: none;
 
 }
@@ -116,7 +119,7 @@
 
 .clickImageUpload .previewImage img{
     
-    width: 420px;
+    width: 320px;
     height: 337px;
 }
 
