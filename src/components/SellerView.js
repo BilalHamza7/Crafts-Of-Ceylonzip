@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import '../styles/sellerview.css'
 import AddImage from '../images/addImage.png';
@@ -7,20 +8,22 @@ import { loginSelId } from '../pages/LoginSeller';
 
 export default function SellerView({ selectedOption }) { // (pro)--comes in Object form or ({ selected})
 
-const [imagePreview, setImagePreview] = useState(null);
-const [sellerOrders, setSellerOrder] = useState([])
-const [sellerSales, setSellerSale] = useState([])
-var file;
+  const navigate = useNavigate();
 
-const [name, setName] = useState('');
-const [selId, setSelId] = useState(loginSelId);
-const [description, setDescription] = useState('');
-const [category, setCategory] = useState('');
-const [price, setPrice] = useState('');
-const [weight, setWeight] = useState('');
-const [filePath, setfilePath] = useState();
+  const [imagePreview, setImagePreview] = useState(null);
+  const [sellerOrders, setSellerOrder] = useState([])
+  const [sellerSales, setSellerSale] = useState([])
+  var file;
 
-const [products, setProducts] = useState([]) //to display my products
+  const [name, setName] = useState('');
+  const [selId, setSelId] = useState(loginSelId);
+  const [description, setDescription] = useState('');
+  const [category, setCategory] = useState('');
+  const [price, setPrice] = useState('');
+  const [weight, setWeight] = useState('');
+  const [filePath, setfilePath] = useState();
+
+  const [products, setProducts] = useState([]) //to display my products
 
   //to display the image in frontend
  const onSelectedFile = (event) => {
@@ -38,7 +41,7 @@ const [products, setProducts] = useState([]) //to display my products
       };
       reader.readAsDataURL(file);
     }
-};
+  };
 
 
 // error with the axios request of below
@@ -72,6 +75,8 @@ const [products, setProducts] = useState([]) //to display my products
         // Handle any errors that occurred during the request
         console.error('Error:', error);
       })
+
+      navigate("/myproducts")
   }
 
   useEffect(() => {

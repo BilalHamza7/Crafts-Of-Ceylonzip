@@ -9,6 +9,7 @@ import { productName, productPrice, productCategory } from '../components/Produc
 import { loginCusId } from './LoginCustomer';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { imageSrc } from '../components/ProductView';
 
 
 export default function CheckOut() {
@@ -24,6 +25,7 @@ export default function CheckOut() {
 
     const unitPrice = productPrice;
     const shipping = 3750;
+    alert(imageSrc)
 
     const handleQuantityChange = (e) => {
         const newQuantity = parseInt(e.target.value, 10) || 0; // setting default value zero
@@ -89,7 +91,7 @@ export default function CheckOut() {
 
                     <div className='product1'>
                         <div className='productDetail1Image'>
-                            <img src={Elephant} alt="Ordered Product - 01" />
+                            <img src={`${process.env.PUBLIC_URL}/loadimages/${imageSrc}.png`} alt="Ordered Product - 01" />
                         </div>
                         <div className='productDetail1'>
                             <label id='productName' >{productName}</label>

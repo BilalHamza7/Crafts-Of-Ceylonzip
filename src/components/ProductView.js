@@ -6,11 +6,13 @@ import { useNavigate } from 'react-router-dom';
 export var productName;
 export var productPrice;
 export var productCategory;
+export var imageSrc;
 
 const images = require.context('../../public/loadimages', true);
 const imageList = images.keys().map(image => images(image));
 
 function ProductView() {
+
   const [products, setProducts] = useState([])
 
   useEffect(() => {
@@ -20,6 +22,7 @@ function ProductView() {
   const loadProducts = async (selectedOption) => { //gets the selected option recieved from parameter as selectedOption
     const result = await axios.get(`http://localhost:8083/product/getProduct/${selectedOption}`); 
     setProducts(result.data);
+    imageSrc = result.data.filePath;
   };
 
   const navigate = useNavigate();
