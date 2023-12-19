@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import '../styles/sellerview.css'
 import AddImage from '../images/addImage.png';
@@ -8,22 +7,20 @@ import { loginSelId } from '../pages/LoginSeller';
 
 export default function SellerView({ selectedOption }) { // (pro)--comes in Object form or ({ selected})
 
-  const navigate = useNavigate();
+const [imagePreview, setImagePreview] = useState(null);
+const [sellerOrders, setSellerOrder] = useState([])
+const [sellerSales, setSellerSale] = useState([])
+var file;
 
-  const [imagePreview, setImagePreview] = useState(null);
-  const [sellerOrders, setSellerOrder] = useState([])
-  const [sellerSales, setSellerSale] = useState([])
-  var file;
+const [name, setName] = useState('');
+const [selId, setSelId] = useState(loginSelId);
+const [description, setDescription] = useState('');
+const [category, setCategory] = useState('');
+const [price, setPrice] = useState('');
+const [weight, setWeight] = useState('');
+const [filePath, setfilePath] = useState();
 
-  const [name, setName] = useState('');
-  const [selId, setSelId] = useState(loginSelId);
-  const [description, setDescription] = useState('');
-  const [category, setCategory] = useState('');
-  const [price, setPrice] = useState('');
-  const [weight, setWeight] = useState('');
-  const [filePath, setfilePath] = useState();
-
-  const [products, setProducts] = useState([]) //to display my products
+const [products, setProducts] = useState([]) //to display my products
 
   //to display the image in frontend
  const onSelectedFile = (event) => {
@@ -41,7 +38,7 @@ export default function SellerView({ selectedOption }) { // (pro)--comes in Obje
       };
       reader.readAsDataURL(file);
     }
-  };
+};
 
 
   // error with the axios request of below
@@ -75,8 +72,6 @@ export default function SellerView({ selectedOption }) { // (pro)--comes in Obje
         // Handle any errors that occurred during the request
         console.error('Error:', error);
       })
-
-      navigate("/myproducts")
   }
 
   useEffect(() => {
@@ -269,8 +264,7 @@ export default function SellerView({ selectedOption }) { // (pro)--comes in Obje
                           <td>{order.customerName}</td>
                           <td>{order.address}</td>
                           <td>{order.productName}</td>
-                          <td><select><option>{order.status}</option><option>IN PROGRESS</option><option>DELIVERED</option></select></td>
-                          <button>Update</button>
+                          <td className={order.status}>{order.status}</td>  // Lets add a button & then when user clicks the status a a drop down should be displayed and hidden , also sing the index lets update the record.. i need the back end to do that
                         </React.Fragment>
                         </tr>
                       ))
