@@ -31,9 +31,6 @@ function ProductView() {
     productName = product.name;
     productPrice = product.price;
     productCategory = product.category;
-    // alert(productName)
-    // alert(productPrice)
-    // alert(productCategory)
   }
 
   return (

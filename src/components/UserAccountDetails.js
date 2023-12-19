@@ -27,7 +27,6 @@ export default function AccountDetails({selectedOption}) {
     },[]);
 
     const getOrders = async () => {
-        alert(id)
         const cusOrder = await axios.get(`http://localhost:8081/order/getOrder/${id}`);
         setSellerOrder(cusOrder.data);
     }

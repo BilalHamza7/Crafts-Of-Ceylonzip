@@ -222,6 +222,45 @@
     padding:10px;
 }
 
+.statusDropdown {   
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    color: #333;
+    border: none;
+  }
+  
+  /* Styles for options inside the dropdown */
+  .statusDropdown option {
+    background-color: white;
+    color: #333;
+  }
+  
+  /* Styles for different statuses */
+  .statusDropdown option[value="IN PROGRESS"] {
+    background-color: rgba(197, 230, 248, 255);
+    color: rgba(74, 152, 197, 255);
+  }
+  
+  .statusDropdown option[value="DELIVERED"] {
+    background-color: rgba(208, 231, 220, 255);
+    color: rgba(78, 164, 122, 255);
+  }
+  
+  /* Style for the selected option */
+  .statusDropdown option:checked {
+    background-color: rgba(242, 220, 245, 255);
+    color: rgba(184, 91, 199, 255);
+  }
+
+  #btnUpdate {
+    background-color: rgba(236, 118, 66, 255);
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    cursor: pointer;
+  }
+
 #pending{
     background-color: rgba(242,220,245,255);
     color: rgba(184,91,199,255);
