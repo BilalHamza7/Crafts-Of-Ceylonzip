@@ -25,7 +25,6 @@ export default function CheckOut() {
 
     const unitPrice = productPrice;
     const shipping = 3750;
-    alert(imageSrc)
 
     const handleQuantityChange = (e) => {
         const newQuantity = parseInt(e.target.value, 10) || 0; // setting default value zero

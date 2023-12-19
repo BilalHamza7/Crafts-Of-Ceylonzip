@@ -269,7 +269,8 @@ export default function SellerView({ selectedOption }) { // (pro)--comes in Obje
                           <td>{order.customerName}</td>
                           <td>{order.address}</td>
                           <td>{order.productName}</td>
-                          <td className={order.status}>{order.status}</td>  // Lets add a button & then when user clicks the status a a drop down should be displayed and hidden , also sing the index lets update the record.. i need the back end to do that
+                          <td><select><option>{order.status}</option><option>IN PROGRESS</option><option>DELIVERED</option></select></td>
+                          <button>Update</button>
                         </React.Fragment>
                         </tr>
                       ))

@@ -18,7 +18,7 @@ export default function AccountDetails({selectedOption}) {
     const [newPassword,setNewPassword] = useState('');
     const id = loginCusId;
 
-    const [sellerOrder, setSellerOrder] = useState('')
+    const [sellerOrder, setSellerOrder] = useState([])
 
     const navigate = useNavigate();
 
@@ -174,12 +174,18 @@ export default function AccountDetails({selectedOption}) {
                     <th>PRICE</th>
                     <th>DATE</th>
                 </tr>
-                <tr>
-                    <td>skdlfj</td>
-                    <td>skdflja</td>
-                    <td>123</td>
-                    <td>2102-1-21</td>
-                </tr>
+                {
+                      sellerOrder((order,index)=>(
+                        <tr key={index}> {/* Ensure key is on the outermost element */}
+                        <React.Fragment>
+                          <td>{order.productName}</td>
+                          <td>{order.quantity}</td>
+                          <td>{order.price}</td>
+                          <td>{formatDate(order.orderDate)}</td>
+                        </React.Fragment>
+                      </tr>
+                      ))
+                    }
                 </tbody>
             </table>
             </div>
