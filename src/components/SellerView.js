@@ -22,6 +22,7 @@ const [filePath, setfilePath] = useState();
 
 const [products, setProducts] = useState([]) //to display my products
 
+const [status, setStatus] = useState('')
   //to display the image in frontend
  const onSelectedFile = (event) => {
     file = event.target.files[0];
@@ -41,24 +42,24 @@ const [products, setProducts] = useState([]) //to display my products
 };
 
 
-// error with the axios request of below
+  // error with the axios request of below
   useEffect(() => {
     loadProducts();
   },[])
 
   const loadProducts = async() => { //gets the selected option recieved from parameter as selectedOption
     const myProducts = await axios.get(`http://localhost:8083/product/getMyProduct/${selId}`)
-    setProducts(myProducts.data);
+    setProducts(myProducts.data);  
   };
 
 
   //to store image
   const createProduct = (event) => {
    event.preventDefault();
-
+    const pid = parseInt(selId)
     axios.post('http://localhost:8083/product/createProduct', {
       name: name,
-      selId: selId,
+      selId: pid,
       description: description,
       category: category,
       price: price,
@@ -90,14 +91,51 @@ const [products, setProducts] = useState([]) //to display my products
 
   const loadStatus = "DELIVERED";
   function loadSales(){
-    const filteredOrders = sellerOrders.filter(order => order.status === loadStatus);
-    setSellerSale(filteredOrders)
+    try {
+      const filteredOrders = sellerOrders.filter(
+        (order) => order.status === "DELIVERED"
+      );
+      setSellerSale(filteredOrders);
+    } catch (error) {
+      // Handle any errors during filtering
+      console.error("Error filtering orders:", error);
+    }
   }
 
   const formatDate = (dateString) => {
     const options = { year: 'numeric', month: 'numeric', day: 'numeric' };
     const formattedDate = new Date(dateString).toLocaleDateString(undefined, options);
     return formattedDate;
+  };
+
+  
+
+  const handleUpdate = async (index) => {
+    const newIndex = index + 1;
+    alert(newIndex)
+    alert(status)
+    const updateResult = await axios.put("http://localhost:8083/order/updateOrder", null,{
+      params: {
+        status: status,
+        id: newIndex 
+      }
+    })
+    .then((updateResult) => {
+      if(updateResult){
+        alert("Status Updated Successfully!")
+      }
+    })
+
+    if(status === "DELIVERED"){
+      loadOrders();
+    }
+
+    window.location.reload()
+  }
+
+  const handleStatusChange = (event) => {
+    const selectedStatus = event.target.value;
+    setStatus(selectedStatus);
   };
 
 
@@ -126,8 +164,8 @@ const [products, setProducts] = useState([]) //to display my products
                         <option value="potteryAndCeramics">Pottery and Ceramics</option>
                         <option value="basketry">Basketry</option>
                         <option value="bambooAndReedCraft">Bamboo and Reed Craft</option>
-                        <option value="woodwork">Traditional Batiks</option>
-                        <option value="woodwork">Traditional Masks</option>
+                        <option value="tradionalBatiks">Traditional Batiks</option>
+                        <option value="tradionalMasks">Traditional Masks</option>
                     </select>
 
                     <label htmlFor="productName">Product Name*</label>
@@ -266,8 +304,16 @@ const [products, setProducts] = useState([]) //to display my products
                           <td>{order.customerName}</td>
                           <td>{order.address}</td>
                           <td>{order.productName}</td>
-                          <td className={order.status}>{order.status}</td>  // Lets add a button & then when user clicks the status a a drop down should be displayed and hidden , also sing the index lets update the record.. i need the back end to do that
+                          {/* <td className={order.status}>{order.status}</td>   */}
+                          <td>
+                            <select className='statusDropdown' onChange={(event) => handleStatusChange(event)}>
+                            <option>{order.status}</option>
+                            <option>IN PROGRESS</option>
+                            <option>DELIVERED</option>
+                            </select>
+                          </td>
                         </React.Fragment>
+                        <button id='btnUpdate' onClick={() => handleUpdate(index)}>Update</button>
                         </tr>
                       ))
                     }

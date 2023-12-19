@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, { useEffect } from 'react'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
-import '../styles/accountDetails.css'
+import '../styles/accountDetails.css';
 import { loginSelId } from '../pages/LoginSeller';
 
 export default function AccountDetails() {
@@ -26,7 +26,7 @@ export default function AccountDetails() {
     },[]);
 
     const getDetails = () => {
-        axios.get(`http://localhost:8083/seller/getSeller?id=${id}`) //gets all details 
+        axios.get(`http://localhost:8083/seller/getSeller?id=${id}`)//gets all details
         .then(response => {
             setName(response.data.name);
             setemail(response.data.email);
