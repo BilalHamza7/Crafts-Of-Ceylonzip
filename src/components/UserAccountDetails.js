@@ -1,6 +1,6 @@
-import React from 'react'
-import { useState } from 'react'
-import '../styles/accountDetails.css'
+import React from 'react';
+import { useState } from 'react';
+import '../styles/accountDetails.css';
 import { useEffect } from 'react';
 import { loginCusId } from '../pages/LoginCustomer';
 import axios from 'axios';
@@ -24,9 +24,10 @@ export default function AccountDetails({selectedOption}) {
 
     useEffect(() => {
         getOrders();
-    },[]);  
+    },[]);
 
     const getOrders = async () => {
+        alert(id)
         const cusOrder = await axios.get(`http://localhost:8081/order/getOrder/${id}`);
         setSellerOrder(cusOrder.data);
     }
@@ -174,6 +175,7 @@ export default function AccountDetails({selectedOption}) {
                     <th>PRICE</th>
                     <th>DATE</th>
                 </tr>
+                
                 {
                       sellerOrder.map((order,index)=>(
                         <tr> {/* Ensure key is on the outermost element */}

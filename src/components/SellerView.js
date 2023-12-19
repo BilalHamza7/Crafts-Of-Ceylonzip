@@ -44,14 +44,14 @@ export default function SellerView({ selectedOption }) { // (pro)--comes in Obje
   };
 
 
-// error with the axios request of below
+  // error with the axios request of below
   useEffect(() => {
     loadProducts();
   },[])
 
   const loadProducts = async() => { //gets the selected option recieved from parameter as selectedOption
     const myProducts = await axios.get(`http://localhost:8083/product/getMyProduct/${selId}`)
-    setProducts(myProducts.data);
+    setProducts(myProducts.data);  
   };
 
 
