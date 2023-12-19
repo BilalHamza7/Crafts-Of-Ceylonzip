@@ -175,9 +175,9 @@ export default function AccountDetails({selectedOption}) {
                     <th>DATE</th>
                 </tr>
                 {
-                      sellerOrder((order,index)=>(
-                        <tr key={index}> {/* Ensure key is on the outermost element */}
-                        <React.Fragment>
+                      sellerOrder.map((order,index)=>(
+                        <tr> {/* Ensure key is on the outermost element */}
+                        <React.Fragment key={index}>
                           <td>{order.productName}</td>
                           <td>{order.quantity}</td>
                           <td>{order.price}</td>
