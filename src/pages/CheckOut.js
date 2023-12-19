@@ -91,7 +91,7 @@ export default function CheckOut() {
 
                     <div className='product1'>
                         <div className='productDetail1Image'>
-                            <img src={`${process.env.PUBLIC_URL}/loadimages/${imageSrc}.png`} alt="Ordered Product - 01" />
+                            <img src={`${process.env.PUBLIC_URL}/loadimages/${imageSrc}.png`} alt="Product - 01" />
                         </div>
                         <div className='productDetail1'>
                             <label id='productName' >{productName}</label>
