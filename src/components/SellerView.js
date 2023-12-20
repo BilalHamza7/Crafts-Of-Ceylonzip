@@ -193,9 +193,9 @@ const [status, setStatus] = useState('')
                     <label htmlFor="productWeight">Item Weight (Kg)</label>
                     <input type="number" id="productWeight" name='productWeight' autoComplete='off'  onChange={(e) => setWeight(e.target.value)}/>
 
-                    {/* <div className='submitButton'>
+                    <div className='submitButton'>
                       <input type="submit" style={{fontSize: "84%"}}value="Submit Product"/>
-                    </div>   */}
+                    </div>  
                   </form>
                 </div>
                 <br/>
@@ -213,7 +213,7 @@ const [status, setStatus] = useState('')
 
                 <img src={imagePreview} alt="add product" id='productImg' htmlFor='uploadImg'/>
 
-                <button id='submitProductBelowImg'>SUBMIT PRODUCT IMAGE</button>
+                {/* <button id='submitProductBelowImg'>SUBMIT PRODUCT IMAGE</button> */}
 
 
 
@@ -265,7 +265,7 @@ const [status, setStatus] = useState('')
 
                   </div>
                   <div className='submitButton'>
-                      <input type="submit" value="Submit Product" formAction=''/>
+                      <input type="submit" value="Submit Product" formAction='' style={{display:'none'}}/>
                 </div>
               
             </div>
