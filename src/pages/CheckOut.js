@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import format from 'date-fns/format';
 import {NavigationBar3} from '../components/NavigationBar';
 import {Footer} from '../components/UserManagment';
@@ -13,6 +13,12 @@ import { imageSrc } from '../components/ProductView';
 
 
 export default function CheckOut() {
+
+    const [imagePreview, setImagePreview] = useState(null);
+    useEffect(() => {
+    // Set the Imported Image Here
+    setImagePreview('../images/addImage2.png');
+    }, []);
 
     const [quantity, setQuantity] = useState(1);
     const [orderTotal, setOrderTotal] = useState('');
