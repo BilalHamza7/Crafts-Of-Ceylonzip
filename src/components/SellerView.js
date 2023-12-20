@@ -129,8 +129,6 @@ const [status, setStatus] = useState('')
     if(status === "DELIVERED"){
       loadOrders();
     }
-
-    window.location.reload()
   }
 
   const handleStatusChange = (event) => {
