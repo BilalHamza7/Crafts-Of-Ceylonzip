@@ -1,13 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import '../styles/sellerview.css'
-import AddImage from '../images/addImage.png';
+import AddImage from '../images/addImage2.png';
 import SellerAccountDetails from './SellerAccountDetails';
 import { loginSelId } from '../pages/LoginSeller';
 
 export default function SellerView({ selectedOption }) { // (pro)--comes in Object form or ({ selected})
 
 const [imagePreview, setImagePreview] = useState(null);
+useEffect(() => {
+  // Set the default image when the component mounts
+  setImagePreview(require('../images/addImage2.png'));
+}, []);
+
 const [sellerOrders, setSellerOrder] = useState([])
 const [sellerSales, setSellerSale] = useState([])
 var file;
@@ -19,6 +24,7 @@ const [category, setCategory] = useState('');
 const [price, setPrice] = useState('');
 const [weight, setWeight] = useState('');
 const [filePath, setfilePath] = useState();
+
 
 const [products, setProducts] = useState([]) //to display my products
 
@@ -138,6 +144,13 @@ const [status, setStatus] = useState('')
     setStatus(selectedStatus);
   };
 
+  const handleButtonClickToUploadImage = () => {
+    // Trigger the file input click when the button is clicked
+    const fileInput = document.getElementById('uploadImg');
+    if (fileInput) {
+      fileInput.click();
+    }
+  };
 
   return (
     <div>
@@ -180,18 +193,62 @@ const [status, setStatus] = useState('')
                     <label htmlFor="productWeight">Item Weight (Kg)</label>
                     <input type="number" id="productWeight" name='productWeight' autoComplete='off'  onChange={(e) => setWeight(e.target.value)}/>
 
-                    <div className='submitButton'>
+                    {/* <div className='submitButton'>
                       <input type="submit" style={{fontSize: "84%"}}value="Submit Product"/>
-                    </div>  
+                    </div>   */}
                   </form>
                 </div>
                 <br/>
+
+            </div>
+            <div className='column3'>
+                
+                <div className='productDetailHeading3'>
+                  <h4>Add your product photo / preview</h4>
+                </div>
+
+                <button onClick={handleButtonClickToUploadImage} id='uploadFile'>Add your product photo / preview
+                  <input type="file" accept="image/*" id='uploadImg' onChange={onSelectedFile} style={{ display: 'none' }}/>
+                </button>
+
+                <img src={imagePreview} alt="add product" id='productImg' htmlFor='uploadImg'/>
+
+                <button id='submitProductBelowImg'>SUBMIT PRODUCT IMAGE</button>
+
+
+
+
+
+
+
+
+
+                {/* <div className='clickImageUpload'>
+
+                  <label className='addImage'>
+
+                    c
+                    <label htmlFor='uploadImg'>Click and Add product photo</label>
+
+
+                      <input type="file" accept="image/*" id='uploadImg' onChange={onSelectedFile} />
+
+
+                  </label>
+
+                  {imagePreview && (
+
+                    <div className='previewImage'>
+                      <img src={imagePreview} alt='Selected product' />
+                    </div>
+                  )}
+
+                  </div> */}
+            </div>
+            <div className='column2'>
                 <div className='productDetailHeading2'>
                   <h4>Package size (Inch)</h4>
                 </div>
-
-            </div>
-            <div className='column2'>
                 <div className='productDetail2'>
                   <form >
 
@@ -210,31 +267,7 @@ const [status, setStatus] = useState('')
                   <div className='submitButton'>
                       <input type="submit" value="Submit Product" formAction=''/>
                 </div>
-
-            </div>
-            <div className='column3'>
-
-              <div className='clickImageUpload'>
-
-                <label className='addImage'>
-
-                  <img src={AddImage} alt="add product" id='productImg' htmlFor='uploadImg'/>
-                  <label htmlFor='uploadImg'>Click and Add product photo</label>
-
-
-                    <input type="file" accept="image/*" id='uploadImg' onChange={onSelectedFile} />
-
-
-                </label>
- 
-                {imagePreview && (
-
-                  <div className='previewImage'>
-                    <img src={imagePreview} alt='Selected product' />
-                  </div>
-                )}
-                
-              </div>
+              
             </div>
           </div>
       )}

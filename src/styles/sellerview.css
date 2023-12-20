@@ -5,19 +5,21 @@
 .productOption{
     display: flex;
     padding: 80px;
-    border: 1px solid black;
+    /* border: 1px solid black; */
 }
 .productOption .column1{
     flex: 35%;
-    border: 1px solid black;
+    /* border: 1px solid black; */
 }
 .productOption .column2{
     flex: 30%;
-    border: 1px solid black;
+    /* border: 1px solid black; */
 }
 .productOption .column3{
     flex: 35%;
-    border: 1px solid black;
+    /* border: 1px solid black; */
+    display: flex;
+    align-items: center;
 }
 .productDetail1 form{
     display: flex;
@@ -32,13 +34,17 @@
 .column1 .productDetailHeading1, .column1 .productDetailHeading2{
     margin-bottom: 13px;
 }
-.column1 .productDetailHeading2{
-    margin-top: 15px;
+.column2 .productDetailHeading2, .column3 .productDetailHeading3{
+    margin-top: 7px;
+    font-size: 130%;
 }
 
 .productDetail2 form{
     display: flex;
     flex-direction: column;
+}
+.column2 .productDetailHeading2{
+    margin-bottom: 17px;
 }
 
 .column1 .productDetail1 input[type="text"], 
@@ -46,9 +52,9 @@
 .column1 .productDetail1 input[type="number"],
 .column1 .productDetail2 input[type="text"],
 .column1 .productDetail2 input[type="number"]{
-    width: 75%;
+    width: 90%;
 }
-.column1 input[type="number"], .column1 input[type="text"], .column1 textarea{
+.column1 input[type="number"], .column1 input[type="text"], .column1 textarea,.column2 input[type="number"]{
     border: 1px rgb(133, 132, 132) solid;
     color: rgb(114, 113, 113);
     font-size: 70%;
@@ -64,7 +70,7 @@
 }
 
 .column1 .productDetail1 select{
-    width: 77%;
+    width: 93%;
 }
 
 .column3{
@@ -79,7 +85,7 @@
     border-radius: 15px;
 }
 
-.clickImageUpload .addImage {
+/* .clickImageUpload .addImage {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -121,12 +127,12 @@
     
     width: 320px;
     height: 337px;
-}
+} */
 
 .submitButton input[type="submit"]{
     margin-top: 30px;
     padding: 6px;
-    width: 333px;
+    width: 362px;
     height: 35px;
     font-size: 120%;
     cursor: pointer;
@@ -138,6 +144,32 @@
 .submitButton  input[type="submit"]:hover{
     color:rgb(67, 64, 64);
     font-size: 122%;
+
+}
+
+.column3{
+    display: flex;
+    flex-direction: column;
+
+}
+
+#productImg{
+    width:328px
+}
+
+#uploadFile, #submitProductBelowImg{
+    margin-top: 30px;
+    padding: 6px;
+    width: 333px;
+    height: 35px;
+    font-size: 120%;
+    cursor: pointer;
+    background-color: rgba(236, 118, 66, 255);
+    color: white;
+    border: none;
+    border-radius: 5px;
+
+    margin-bottom: 30px;
 
 }
 
@@ -224,45 +256,6 @@
     border-radius: 12px;
     padding:10px;
 }
-
-.statusDropdown {   
-    padding: 5px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    color: #333;
-    border: none;
-  }
-  
-  /* Styles for options inside the dropdown */
-  .statusDropdown option {
-    background-color: white;
-    color: #333;
-  }
-  
-  /* Styles for different statuses */
-  .statusDropdown option[value="IN PROGRESS"] {
-    background-color: rgba(197, 230, 248, 255);
-    color: rgba(74, 152, 197, 255);
-  }
-  
-  .statusDropdown option[value="DELIVERED"] {
-    background-color: rgba(208, 231, 220, 255);
-    color: rgba(78, 164, 122, 255);
-  }
-  
-  /* Style for the selected option */
-  .statusDropdown option:checked {
-    background-color: rgba(242, 220, 245, 255);
-    color: rgba(184, 91, 199, 255);
-  }
-
-  #btnUpdate {
-    background-color: rgba(236, 118, 66, 255);
-    color: white;
-    border: none;
-    padding: 8px 16px;
-    cursor: pointer;
-  }
 
 #pending{
     background-color: rgba(242,220,245,255);
